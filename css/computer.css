@@ -1,0 +1,11 @@
+@media (min-width: 769px) {
+	body {
+		background-color: green;
+	}
+	
+	.login .form .title {
+		font-size: 300px;
+	}
+	
+}
+
