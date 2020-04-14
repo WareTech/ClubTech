@@ -1,11 +1,20 @@
 function profile()
 {
-	$("#content").load("Profile.jsp");
+	$("#content").load("Profile.jsp", function(){
+		$("#content").enhanceWithin();
+	});
 }
 
 function settings()
 {
-	$("#content").load("Settings.jsp");
+	$("#content").load("Settings.jsp", function(){
+		$("#content").enhanceWithin();
+	});
+}
+
+function home()
+{
+	document.location = "Home.jsp";
 }
 
 function logout()
@@ -89,6 +98,27 @@ function suscriptionSearch()
 function memberCreate()
 {
 	$("#content").load("MemberCreate.jsp", function(){
+		$("#content").enhanceWithin();
+	});
+}
+
+function memberView()
+{
+	$("#content").load("MemberView.jsp", function(){
+		$("#content").enhanceWithin();
+	});
+}
+
+function memberSearch()
+{
+	$("#content").load("MemberSearch.jsp", function(){
+		$("#content").enhanceWithin();
+	});
+}
+
+function ticketCreate()
+{
+	$("#content").load("TicketCreate.jsp", function(){
 		$("#content").enhanceWithin();
 	});
 }
