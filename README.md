@@ -86,3 +86,4 @@ reporte de estado de deudores por socio por categoria ($ / % / antigüedad deuda
 rendicion de caja
 reporte de ingresos
 reporte de egresos
+
