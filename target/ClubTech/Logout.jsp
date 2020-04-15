@@ -1,6 +1,0 @@
-<%
-session.invalidate();
-%>
-
-
-
