@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ClubTech:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ClubTech</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ClubTech.war">
+      <element id="artifact" artifact-name="ClubTech:war exploded" />
+    </root>
+  </artifact>
+</component>
