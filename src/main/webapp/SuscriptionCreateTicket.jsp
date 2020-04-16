@@ -1,5 +1,5 @@
-<%@include file="Utils.jsp"%>
-<div> 
+<%@ page import="com.WareTech.ClubTech.web.Utils" %>
+<div>
 	<h3>Pagar cuota</h3>
 
 	<ul data-role="listview" data-inset="true" data-divider-theme="a">
@@ -8,10 +8,10 @@
 		<li data-role="list-divider">Cuota</li>
 		<li>2020 Anual ($5.000)</li>
 		<li data-role="list-divider">Fecha</li>
-		<li><%=date%></li>
+		<li><%=Utils.dateTimeNow()%></li>
 		<li data-role="list-divider">Comprobante</li>
 		<li>1234567890</li>
 		<li data-role="list-divider">Autodidad</li>
-		<li><%=username%></li>
+		<li><%=Utils.getUser(request, response).getUsername()%></li>
 	</ul>
 </div>

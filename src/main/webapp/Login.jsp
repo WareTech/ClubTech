@@ -1,5 +1,4 @@
-<%@include file="Utils.jsp"%>
-
+<%@ page import="com.WareTech.ClubTech.web.Utils" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,7 +13,7 @@
 	</head>
 	<body>
 		<div data-role="header" data-position="fixed">
-			<h1><%=APPLICATION_NAME%></h1>
+			<h1><%=Utils.APPLICATION_NAME%></h1>
 		</div>
 		<div data-role="popup" id="error">
 			<p>Login invalido</p>

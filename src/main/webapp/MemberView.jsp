@@ -1,6 +1,4 @@
-<%@include file="Utils.jsp"%>
-
-<div> 
+<div>
 	<ul data-role="listview" data-inset="true" data-divider-theme="a">
 		<li data-role="list-divider">Nombre</li>
 		<li>Leandro</li>

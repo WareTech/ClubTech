@@ -1,17 +1,16 @@
-<%@include file="Utils.jsp"%>
-
-<div> 
+<%@ page import="com.WareTech.ClubTech.web.Utils" %>
+<div>
 	<ul data-role="listview" data-inset="true" data-divider-theme="a">
 		<li data-role="list-divider">Partido</li>
-		<li><%=matchDescription%></li>
+		<li>ADIP vs Gimnasia</li>
 		<li data-role="list-divider">Precio</li>
-		<li><%=ticketPrice%></li>
+		<li>$250,00</li>
 		<li data-role="list-divider">Fecha</li>
-		<li><%=date%></li>
+		<li><%=Utils.dateTimeNow()%></li>
 		<li data-role="list-divider">Comprobante</li>
 		<li>1234567890</li>
 		<li data-role="list-divider">Autodidad</li>
-		<li><%=username%></li>
+		<li><%=Utils.getUser(request, response).getUsername()%></li>
 	</ul>
 	<button class="ui-btn ui-corner-all" id="ticket-create" onclick="javascript:ticketCreate(); return;">Confirmar Pago</button>
 </div>

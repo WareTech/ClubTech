@@ -1,7 +1,9 @@
+<%@ page import="com.WareTech.ClubTech.entity.User" %>
 <div data-role="footer" data-position="fixed">
 	<h1>
 <%
-if (username == null)
+User user = Utils.getUser(request, response);
+if (user == null)
 {
 %>
 	<a href="javascript:login();">Ingresar</a>
@@ -9,7 +11,7 @@ if (username == null)
 } 
 else 
 {
-	out.print(username);
+	out.print(user.getUsername());
 }
 %>
 	</h1>

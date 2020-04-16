@@ -27,11 +27,6 @@ public class SecurityService
 			String url
 			) 
 	{
-		if (user == null)
-		{
-			user = (User) Database.getCurrentSession().get(User.class, 616l);
-		}
-
 		System.out.println(String.format("SecurityService#checkAuthorization user=%s url=%s", user, url));
 
 		if (url == null || "".equals(url))

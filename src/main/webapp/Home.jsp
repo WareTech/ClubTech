@@ -1,5 +1,3 @@
-<%@include file="Utils.jsp"%>
-
 <!DOCTYPE html>
 <html>
 	<head>
