@@ -20,7 +20,7 @@ function home()
 function logout()
 {
 	$("#content").load("Logout.jsp", function() {
-  		document.location = "Home.jsp";
+  		home();
 	});
 }
 

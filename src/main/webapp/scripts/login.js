@@ -3,11 +3,10 @@ function login()
     $.post(
         "services/Login.jsp", 
         $("#login_form").serialize(),
-        //{username: $("#username").val(), password: $("#password").val()},
         function(data, status){
             if (data == 1){
                 document.location = "Home.jsp";
-                retur;
+                return;
             }
 
             $("#error").popup("open");

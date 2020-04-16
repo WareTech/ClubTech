@@ -1,7 +1,6 @@
 package com.WareTech.ClubTech.filter;
 
 import java.io.IOException;
-import java.util.*;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,7 +17,6 @@ import com.WareTech.ClubTech.web.Utils;
 public class SecurityFilter 
 	implements javax.servlet.Filter
 {
-	final static public List<String> WHITE_LIST = Arrays.asList(new String[]{Utils.URL_BASE, Utils.URL_LOGIN, Utils.URL_LOGOUT, Utils.URL_UNATHORIZED});
 	final static public String REDIRECT_AFTER_LOGIN = "REDIRECT_AFTER_LOGIN";
 	
 	@Override
@@ -43,7 +41,7 @@ public class SecurityFilter
 		System.out.println("Url=" + url);
 		User user = (User) Utils.getUser(httpServletRequest, httpServletResponse);
 
-		if (this.isWhiteListed(url) || this.checkAuthorization(user, url))
+		if (this.checkAuthorization(user, url))
 		{
 			filterChain.doFilter(
 				servletRequest,
@@ -62,17 +60,6 @@ public class SecurityFilter
 	{
 	}
 
-	/**
-	 *
-	 * @param url
-	 * @return
-	 */
-	public boolean isWhiteListed(
-		String url
-		)
-	{
-		return WHITE_LIST.contains(url);
-	}
 	/**
 	 *
 	 * @param user
