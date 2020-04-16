@@ -9,41 +9,42 @@ Sistematizar procesos de gestión, administrativos, deportivos y de salud por me
 
 MODULO 1: INICIAL FICHA DE SOCIO/DEPORTISTA
 
-datos filiatorios 
-solapa general :
-apellido, nombre
-DNI (N° SOCIO)
-direccion, telefono de contacto, mail (permitir cargar mas de una opción por ítem)
-fecha de nacimiento
-nombre apellido de los padres
-Solapa financiera
-medio de pago: 
-cobrador,
-debito en cuenta (posibilidad de incorporar campos) 
-debito automático (tarjeta de credito?)
-Beca: 
-si [motivo, monto, porcentaje]
-no
-historial (años anteriores)
-solapa deportiva:
-Actividad: [desplega opciones] 
-sin actividad solo socio
-futbol
-zumba
-gimnasia
-posibilidad de incluir otras actividades a desarrollar a futuro
-Para Futbol: puesto que juega, pierna habil, categoria, competencia
-Se podria agregar:
-Comportamiento/Conducta
-Evaluación general/anual del DT y/o Coordinadores
-solapa medica:
-estudios realizados, patologias, lesiones, seguimientos
-posibilidad de adjuntar informes de estudios medicos
-Obra social (nombre/n° socio/contacto emergencias/derivaciones)
-solapa otros:
-actividades/cargos/comisiones que integra
-MODULO 2: CAJA
+    datos filiatorios 
+    solapa general :
+    apellido, nombre
+    DNI (N° SOCIO)
+    direccion, telefono de contacto, mail (permitir cargar mas de una opción por ítem)
+    fecha de nacimiento
+    nombre apellido de los padres
+    
+    Solapa financiera
+    medio de pago: 
+    cobrador,
+    debito en cuenta (posibilidad de incorporar campos) 
+    debito automático (tarjeta de credito?)
+    Beca: 
+    si [motivo, monto, porcentaje]
+    no
+    historial (años anteriores)
+    solapa deportiva:
+    Actividad: [desplega opciones] 
+    sin actividad solo socio
+    futbol
+    zumba
+    gimnasia
+    posibilidad de incluir otras actividades a desarrollar a futuro
+    Para Futbol: puesto que juega, pierna habil, categoria, competencia
+    Se podria agregar:
+    Comportamiento/Conducta
+    Evaluación general/anual del DT y/o Coordinadores
+    solapa medica:
+    estudios realizados, patologias, lesiones, seguimientos
+    posibilidad de adjuntar informes de estudios medicos
+    Obra social (nombre/n° socio/contacto emergencias/derivaciones)
+    solapa otros:
+    actividades/cargos/comisiones que integra
 
+MODULO 2: CAJA
 SUB MODULO 1:
 
 FACTURACION Y COBRANZAS:

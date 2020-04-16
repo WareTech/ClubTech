@@ -1,13 +1,6 @@
-function profile()
+function goTo(url)
 {
-	$("#content").load("Profile.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function settings()
-{
-	$("#content").load("Settings.jsp", function(){
+	$("#content").load(url, function(){
 		$("#content").enhanceWithin();
 	});
 }
@@ -27,26 +20,6 @@ function logout()
 function login()
 {
 	document.location = "Login.jsp";
-}
-
-function suscriptionCreateTicket()
-{
-	$("#content").load("SuscriptionCreateTicket.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function suscriptionCreateConfirm()
-{
-	$("#content").load("SuscriptionCreateConfirm.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-function suscriptionCreateSelectPeriod()
-{
-	$("#content").load("SuscriptionCreatePeriod.jsp", function(){
-		$("#content").enhanceWithin();
-	});
 }
 
 function suscriptionCreateSearchMember()
@@ -78,48 +51,5 @@ function suscriptionPeriodsLoad()
  			$("#suscripton-create-period").append("<option value='" + data[index].id +"' amount='" + data[index].amount +"'>" + data[index].description + "</option>");
 		});
   	});
-}
-
-function suscriptionPay()
-{
-	$("#content").load("SuscriptionCreateMember.jsp", function(){
-		//suscriptionPeriodsLoad();
-		$("#content").enhanceWithin();
-	});
-}
-
-function suscriptionSearch()
-{
-	$("#content").load("SuscriptionSearch.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function memberCreate()
-{
-	$("#content").load("MemberCreate.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function memberView()
-{
-	$("#content").load("MemberView.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function memberSearch()
-{
-	$("#content").load("MemberSearch.jsp", function(){
-		$("#content").enhanceWithin();
-	});
-}
-
-function ticketCreate()
-{
-	$("#content").load("TicketCreate.jsp", function(){
-		$("#content").enhanceWithin();
-	});
 }
 

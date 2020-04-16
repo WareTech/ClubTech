@@ -12,6 +12,7 @@ public class SimpleSecurityFilter
     extends SecurityFilter
 {
     final static public List<String> BLACK_LIST = Arrays.asList(new String[]{
+        "/MemberCreate.jsp",
         "/SuscriptionCreateMember.jsp",
         "/SuscriptionSearch.jsp",
         "/TicketCreate.jsp"

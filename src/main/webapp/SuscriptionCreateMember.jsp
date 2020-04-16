@@ -9,12 +9,12 @@
 
 	<div id="suscripton-create-member-list-panel" style="display: none">
 		<ul data-role="listview" data-inset="true">
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Leandro (24.952.726)</a></li>
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Augusto (25.952.726)</a></li>
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Ignacio (29.952.726)</a></li>
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Valentino (29.952.726)</a></li>
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Manuel (29.952.726)</a></li>
-			<li><a href="javascript:suscriptionCreateSelectPeriod();">Soncini, Ines (29.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Leandro (24.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Augusto (25.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Ignacio (29.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Valentino (29.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Manuel (29.952.726)</a></li>
+			<li><a href="javascript:goTo('SuscriptionCreatePeriod.jsp');">Soncini, Ines (29.952.726)</a></li>
 		</ul>
 	</div>
 </div>
