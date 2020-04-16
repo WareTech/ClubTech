@@ -87,41 +87,20 @@
           <configuration><file>C:\Java\apache-tomcat-8.5.54\webapps</file></configuration>
         </plugin>
         <plugin>
-          <groupId>com.coderplus.maven.plugins</groupId>
-          <artifactId>copy-rename-maven-plugin</artifactId>
-          <version>1.0</version>
-          <executions>
-            <execution>
-              <id>copy-file</id>
-              <phase>install</phase>
-              <goals>
-                <goal>copy</goal>
-              </goals>
-              <configuration>
-                <sourceFile>${basedir}/target/ClubTech.war</sourceFile>
-                <destinationFile>c:/Java/apache-tomcat-8.5.54/webapps/ClubTech.war</destinationFile>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>com.coderplus.maven.plugins</groupId>
-          <artifactId>copy-rename-maven-plugin</artifactId>
-          <version>1.0</version>
-          <executions>
-            <execution>
-              <id>copy-file</id>
-              <phase>install</phase>
-              <goals>
-                <goal>copy</goal>
-              </goals>
-              <configuration>
-                <sourceFile>${basedir}/target/ClubTech.war</sourceFile>
-                <destinationFile>c:/Java/apache-tomcat-8.5.54/webapps/ClubTech.war
-                </destinationFile>
-              </configuration>
-            </execution>
-          </executions>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <version>1.5.0</version>
+          <configuration>
+            <container>
+              <containerId>tomcat7x</containerId>
+              <type>installed</type>
+              <home>C:\Java\apache-tomcat-8.5.54</home>
+            </container>
+            <configuration>
+              <type>existing</type>
+              <home>C:\Java\apache-tomcat-8.5.54</home>
+            </configuration>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
