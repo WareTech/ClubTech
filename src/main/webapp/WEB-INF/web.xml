@@ -14,7 +14,7 @@
 	</filter>
 	<filter>
 		<filter-name>SecurityFilter</filter-name>
-		<filter-class>com.WareTech.ClubTech.filter.SimpleSecurityFilter</filter-class>
+		<filter-class>com.WareTech.ClubTech.filter.SecurityFilter</filter-class>
 	</filter>
 	<!--filter-mapping>
 		<filter-name>TransactionFilter</filter-name>

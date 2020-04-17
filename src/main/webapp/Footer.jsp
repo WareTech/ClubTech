@@ -1,4 +1,5 @@
 <%@ page import="com.WareTech.ClubTech.entity.User" %>
+<%@ page import="com.WareTech.ClubTech.Utils" %>
 <div data-role="footer" data-position="fixed">
 	<h1>
 <%

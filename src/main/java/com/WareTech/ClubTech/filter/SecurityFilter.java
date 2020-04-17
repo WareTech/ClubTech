@@ -10,9 +10,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.WareTech.ClubTech.Context;
 import com.WareTech.ClubTech.entity.User;
 import com.WareTech.ClubTech.service.SecurityService;
-import com.WareTech.ClubTech.web.Utils;
+import com.WareTech.ClubTech.Utils;
 
 public class SecurityFilter 
 	implements javax.servlet.Filter
@@ -35,10 +36,7 @@ public class SecurityFilter
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
-		System.out.println("SecurityFilter:" + httpServletRequest.getRequestURL());
-
-		String url = httpServletRequest.getServletPath();
-		System.out.println("Url=" + url);
+		String url = httpServletRequest.getServletPath().substring(1);
 		User user = (User) Utils.getUser(httpServletRequest, httpServletResponse);
 
 		if (this.checkAuthorization(user, url))
@@ -50,7 +48,7 @@ public class SecurityFilter
 		}
 		else
 		{
-			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + Utils.URL_UNATHORIZED);
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + Utils.URL_UNAUTHORIZED);
 		}
 	}
 
@@ -71,7 +69,7 @@ public class SecurityFilter
 		String url
 		)
 	{
-		return SecurityService.getInstance().checkAuthorization(user, url);
+		return Context.getSecurityService().checkAuthorization(user, url);
 	}
 
 }

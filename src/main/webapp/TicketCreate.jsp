@@ -1,4 +1,4 @@
-<%@ page import="com.WareTech.ClubTech.web.Utils" %>
+<%@ page import="com.WareTech.ClubTech.Utils" %>
 <div>
 	<ul data-role="listview" data-inset="true" data-divider-theme="a">
 		<li data-role="list-divider">Partido</li>
@@ -12,5 +12,5 @@
 		<li data-role="list-divider">Autodidad</li>
 		<li><%=Utils.getUser(request, response).getUsername()%></li>
 	</ul>
-	<button class="ui-btn ui-corner-all" id="ticket-create" onclick="javascript:ticketCreate(); return;">Confirmar Pago</button>
+	<button class="ui-btn ui-corner-all" id="ticket-create" onclick="javascript:goTo('TicketView.jsp'); return;">Confirmar Pago</button>
 </div>

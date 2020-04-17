@@ -46,7 +46,11 @@
 	.options-page .ui-btn {
 		text-align: left;	
 	}
-	
+
+	.hidden {
+		display: none;
+	}
+
 	#page1 {
 		display: none;
 	}

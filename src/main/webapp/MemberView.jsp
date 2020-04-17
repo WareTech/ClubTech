@@ -17,5 +17,5 @@
 		<li data-role="list-divider">Nota</li>
 		<li>DT del Senior</li>
 	</ul>
-	<button class="ui-btn ui-corner-all" id="ticket-create" onclick="javascript:ticketCreate(); return;">Editar</button>
+	<button class="ui-btn ui-corner-all" id="ticket-create" onclick="javascript:goTo('MemberEdit.jsp'); return;">Editar</button>
 </div>

@@ -1,6 +1,8 @@
 package com.WareTech.ClubTech.entity;
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User
@@ -8,6 +10,8 @@ public class User
 {
     protected String username;
     protected String password;
+
+	protected List<String> accessList = new ArrayList<>();
 
 	/**
 	 * @return the username
@@ -45,4 +49,21 @@ public class User
 		this.password = password;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
+	public List<String> getAccessList()
+	{
+		return accessList;
+	}
+
+	/**
+	 *
+	 * @param accessList
+	 */
+	public void setAccessList(List<String> accessList)
+	{
+		this.accessList = accessList;
+	}
 }

@@ -1,0 +1,6 @@
+Access = MemberCreate.jsp,SuscriptionCreateMember.jsp,SuscriptionSearch.jsp,TicketCreate.jsp
+Augusto:Soncini = MemberCreate.jsp,SuscriptionCreateMember.jsp,SuscriptionSearch.jsp,TicketCreate.jsp
+Katia:Olchansky = SuscriptionSearch.jsp
+Valentino Soncini:Soncini = MemberCreate.jsp
+Catalina:Soncini =
+

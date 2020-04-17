@@ -1,4 +1,4 @@
-<%@ page import="com.WareTech.ClubTech.web.Utils" %>
+<%@ page import="com.WareTech.ClubTech.Context" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div data-role="header" data-position="fixed">
-			<h1><%=Utils.APPLICATION_NAME%></h1>
+			<h1><%=Context.getApplicationName()%></h1>
 		</div>
 		<div data-role="popup" id="error">
 			<p>Login invalido</p>

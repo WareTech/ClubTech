@@ -1,6 +1,6 @@
 package com.WareTech.ClubTech.entity;
 
-import com.WareTech.ClubTech.Constants;
+import com.WareTech.ClubTech.Context;
 
 import javax.persistence.Entity;
 
@@ -67,8 +67,8 @@ public class Player
             return null;
         }
 
-        return Constants.DATE_FORMATER.format(
-                Constants.DATE_FORMATER_ISO.parse(
+        return Context.DATE_FORMATER.format(
+                Context.DATE_FORMATER_ISO.parse(
                         this.getBirthdate()
                 )
         );

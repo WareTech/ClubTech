@@ -1,4 +1,4 @@
-<%@ page import="com.WareTech.ClubTech.web.Utils" %>
+<%@ page import="com.WareTech.ClubTech.Utils" %>
 <div>
 	<h3>Pagar cuota</h3>
 
