@@ -5,8 +5,9 @@ import com.WareTech.ClubTech.entity.User;
 public interface SecurityService
 {
 	/**
+	 *
 	 * @param user
-	 * @param access
+	 * @param url
 	 * @return
 	 */
 	public boolean checkAuthorization(User user, String url);

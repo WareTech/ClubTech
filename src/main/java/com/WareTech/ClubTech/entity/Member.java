@@ -5,7 +5,7 @@ import com.WareTech.ClubTech.Context;
 import javax.persistence.Entity;
 
 @Entity
-public class Player
+public class Member
     extends AbstractPersistentObject
 {
     protected String firstname;

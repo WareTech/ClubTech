@@ -8,7 +8,7 @@ public class Payment
     extends AbstractPersistentObject
 {
     protected Long playerId;
-    protected Long suscriptionId;
+    protected Long subscriptionId;
     protected Double amount;
     protected Date date;
 
@@ -18,11 +18,11 @@ public class Payment
     public void setPlayerId(Long playerId) {
         this.playerId = playerId;
     }
-    public Long getSuscriptionId() {
-        return suscriptionId;
+    public Long getSubscriptionId() {
+        return subscriptionId;
     }
-    public void setSuscriptionId(Long suscriptionId) {
-        this.suscriptionId = suscriptionId;
+    public void setSubscriptionId(Long subscriptionId) {
+        this.subscriptionId = subscriptionId;
     }
     public Double getAmount() {
         return amount;

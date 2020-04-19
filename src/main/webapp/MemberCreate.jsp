@@ -20,6 +20,9 @@
 		<label for="member-create-address">Direcci&oacute;n:</label>
 		<input type="text" name="member-create-address" id="member-create-address" value="">
 
+		<label for="member-create-email">eMail:</label>
+		<input type="text" name="member-create-email" id="member-create-email" value="">
+
 		<label for="member-create-father-info">Nombre y Apellido del Padre:</label>
 		<input type="text" name="member-create-father-info" id="member-create-father-info" value="">
 
@@ -43,7 +46,7 @@
 				<option value="100">100%</option>
 		</select>
 
-		<label for="member-create-activity"">Actividad:</label>
+		<label for="member-create-activity">Actividad:</label>
 		<select name="member-create-activity" id="member-create-activity">
 			<option value="member">Sin Actividad</option>
 			<option value="zumba">Zumba</option>
@@ -78,7 +81,7 @@
 		</select>
 		
 		<label for="member-create-state"">Estado:</label>
-		<select name="member-create-category" id="member-create-category">
+		<select name="member-create-state" id="member-create-state">
 			<option value="Fichado">Fichado</option>
 			<option value="Listado">Listado</option>
 			<option value="Habilitado">Habilitado</option>

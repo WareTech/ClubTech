@@ -7,7 +7,7 @@ User user = Utils.getUser(request, response);
 if (user == null)
 {
 %>
-	<a href="javascript:login();">Ingresar</a>
+	<a href="javascript:goTo('Login.jsp');">Ingresar</a>
 <%
 } 
 else 

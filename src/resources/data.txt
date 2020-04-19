@@ -1,6 +1,18 @@
-Access = MemberCreate.jsp,SuscriptionCreateMember.jsp,SuscriptionSearch.jsp,TicketCreate.jsp
-Augusto:Soncini = MemberCreate.jsp,SuscriptionCreateMember.jsp,SuscriptionSearch.jsp,TicketCreate.jsp
-Katia:Olchansky = SuscriptionSearch.jsp
-Valentino Soncini:Soncini = MemberCreate.jsp
-Catalina:Soncini =
+#index.jsp,Home.jsp,Header.jsp,Footer.jsp,Landing.jsp,Login.jsp,Logout.jsp,Error.jsp,Unauthorized.jsp,Profile.jsp,Settings.jsp
+#SubscriptionCreateMember.jsp,SubscriptionCreateMember.jsp,SubscriptionSearch.jsp,MemberCreate.jsp,MemberSearch.jsp,TicketCreate.jsp,TicketList.jsp,PersonSearchPage.jsp,BuffetTicketCreate.jsp,BuffetTicketResume.jsp,StoreTicketCreate.jsp,StoreTicketResume.jsp,SubscriptionEdit.jsp,Activities.jsp,UserList.jsp,AccessList.jsp
 
+SUBSCRIPTION_ACCESS_LIST = SubscriptionCreateMember.jsp,SubscriptionCreateMember.jsp,SubscriptionSearch.jsp,SubscriptionEdit.jsp
+MEMBER_ACCESS_LIST = MemberCreate.jsp,MemberSearch.jsp
+TICKET_ACCESS_LIST = TicketCreate.jsp,TicketList.jsp
+PERSON_ACCESS_LIST = PersonSearchPage.jsp
+BUFFET_ACCESS_LIST = BuffetTicketCreate.jsp,BuffetTicketResume.jsp
+STORE_ACCESS_LIST = StoreTicketCreate.jsp,StoreTicketResume.jsp
+SYSTEM_ACCESS_LIST = Activities.jsp,UserList.jsp,AccessList.jsp
+DEVELOPER_ACCESS_LIST = DEVELOPER_ACCESS
+
+ACCESS_LIST = SUBSCRIPTION_ACCESS_LIST,MEMBER_ACCESS_LIST,TICKET_ACCESS_LIST,PERSON_ACCESS_LIST,BUFFET_ACCESS_LIST,STORE_ACCESS_LIST,SYSTEM_ACCESS_LIST,DEVELOPER_ACCESS_LIST
+
+Augusto:Soncini = SUBSCRIPTION_ACCESS_LIST
+Valentino:Soncini = MEMBER_ACCESS_LIST
+Catalina:Soncini = TICKET_ACCESS_LIST,BUFFET_ACCESS_LIST,STORE_ACCESS_LIST
+Katia:Olchansky = ACCESS_LIST

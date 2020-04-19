@@ -1,24 +1,31 @@
 package com.WareTech.ClubTech.service;
 
-import com.WareTech.ClubTech.entity.Access;
 import com.WareTech.ClubTech.entity.User;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.*;
 
 public class BasicSecurityService
     implements SecurityService
 {
-    static protected List<String> ACCESS_LIST = new ArrayList<>();
+    final static public String ACCESS_LIST = "ACCESS_LIST";
+
     static protected Map<String, List<String>> USER_ACCESS_MAP = new HashMap<>();
     static protected Map<String, String> USER_PASSWORD_MAP = new HashMap<>();
+
+    /**
+     *
+     * @return
+     */
+    public List<String> getAccessList()
+    {
+        return USER_ACCESS_MAP.get(ACCESS_LIST);
+    }
 
     @Override
     public boolean checkAuthorization(User user, String url)
     {
-        if (!ACCESS_LIST.contains(url))
+        if (!this.getAccessList().contains(url))
         {
             return true;
         }
@@ -74,23 +81,49 @@ public class BasicSecurityService
             String[] userString;
             String username;
             String password;
+            List<String> accessList;
+            List<String> userAccessList;
             for(String line : lines)
             {
+                line = line.trim();
+                if (line.isEmpty())
+                {
+                    continue;
+                }
+
+                if (line.startsWith("#"))
+                {
+                    continue;
+                }
+
                 lineString = line.split("=");
                 key = lineString[0].trim();
-                values = lineString[1].trim().split(",");
-                if ("Access".equals(key))
+
+                if (key.isEmpty())
                 {
-                    ACCESS_LIST = Arrays.asList(values);
+                    continue;
                 }
-                else
-                {
-                    userString = key.split(":");
-                    username = userString[0].trim();
+
+                userString = key.split(":");
+                username = userString[0].trim();
+                if (userString.length > 1) {
                     password = userString[1].trim();
                     USER_PASSWORD_MAP.put(username, password);
-                    USER_ACCESS_MAP.put(username, Arrays.asList(values));
                 }
+
+                accessList = new ArrayList<>();
+                values = lineString[1].trim().split(",");
+                for(String access : values)
+                {
+                    userAccessList = USER_ACCESS_MAP.get(access);
+                    if (userAccessList == null) {
+                        accessList.add(access);
+                        continue;
+                    }
+                    accessList.addAll(userAccessList);
+                }
+
+                USER_ACCESS_MAP.put(username, accessList);
             }
         }
         catch (Exception exception)

@@ -67,13 +67,13 @@ public class Utils
 	 * @param httpServletResponse
 	 * @return
 	 */
-	static public boolean chechAuthorization(
+	static public boolean checkAuthorization(
 		HttpServletRequest httpServletRequest,
 		HttpServletResponse httpServletResponse
 		)
 	{
 		String url = httpServletRequest.getServletPath();
-		return chechAuthorization(httpServletRequest, httpServletResponse, url);
+		return checkAuthorization(httpServletRequest, httpServletResponse, url);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Utils
 	 * @param url
 	 * @return
 	 */
-	static public boolean chechAuthorization(
+	static public boolean checkAuthorization(
 		HttpServletRequest httpServletRequest,
 		HttpServletResponse httpServletResponse,
 		String url
@@ -99,7 +99,7 @@ public class Utils
 	 * @param url
 	 * @return
 	 */
-	static public boolean chechAuthorization(
+	static public boolean checkAuthorization(
 		User user,
 		String url
 		)
@@ -111,33 +111,10 @@ public class Utils
 	 *
 	 * @param httpServletRequest
 	 * @param httpServletResponse
-	 * @param url
-	 * @return
-	 */
-	static public String visibility(
-		HttpServletRequest httpServletRequest,
-		HttpServletResponse httpServletResponse,
-		String url
-		)
-	{
-		if (chechAuthorization(httpServletRequest, httpServletResponse, url))
-		{
-			return "";
-		}
-		else
-		{
-			return " style=\"display:none\"";
-		}
-	}
-
-	/**
-	 *
-	 * @param httpServletRequest
-	 * @param httpServletResponse
 	 * @param urls
 	 * @return
 	 */
-	static public String visibility(
+	static public boolean checkAuthorization(
 		HttpServletRequest httpServletRequest,
 		HttpServletResponse httpServletResponse,
 		String[] urls
@@ -145,49 +122,13 @@ public class Utils
 	{
 		for (String url : urls)
 		{
-			if (chechAuthorization(httpServletRequest, httpServletResponse, url))
+			if (checkAuthorization(httpServletRequest, httpServletResponse, url))
 			{
-				return "";
+				return true;
 			}
 		}
 
-		return " style=\"display:none\"";
+		return false;
 	}
 
-	/**
-	 *
-	 * @param username
-	 * @param password
-	 * @return
-	 */
-	static public User login(
-		String username,
-		String password
-		)
-	{
-		return Context.getSecurityService().login(username, password);
-	}
-
-	/**
-	 *
-	 * @param httpServletRequest
-	 * @param httpServletResponse
-	 * @return
-	 */
-	static public User login(
-		HttpServletRequest httpServletRequest,
-		HttpServletResponse httpServletResponse
-		)
-	{
-		String username = httpServletRequest.getParameter("username");
-		String password = httpServletRequest.getParameter("password");
-		User user = Utils.login(username, password);
-
-		if (user != null)
-		{
-			Utils.setUser(httpServletRequest, httpServletResponse, user);
-		}
-
-		return user;
-	}
 }

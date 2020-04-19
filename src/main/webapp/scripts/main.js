@@ -1,8 +1,11 @@
-function goTo(url)
+function loadingShow()
 {
-	$("#content").load(url, function(){
-		$("#content").enhanceWithin();
-	});
+	$.mobile.loading("show", {});
+}
+
+function loadingHide()
+{
+	$.mobile.loading("hide", {});
 }
 
 function home()
@@ -10,46 +13,50 @@ function home()
 	document.location = "Home.jsp";
 }
 
-function logout()
+function load(url, container)
 {
-	$("#content").load("Logout.jsp", function() {
-  		home();
+	loadingShow();
+	$(container).load(url, function(){
+		$(container).enhanceWithin();
+		loadingHide();
 	});
+}
+
+function goTo(url)
+{
+	load(url, "#content");
 }
 
 function login()
 {
-	document.location = "Login.jsp";
-}
+	loadingShow();
+	$.post(
+		"services/Login.jsp",
+		$("#login_form").serialize(),
+		function(data, status){
+			if (data == 1){
+				home();
+				loadingHide();
+				return;
+			}
 
-function suscriptionCreateSearchMember()
-{
-	$("#suscripton-create-member-list-panel").fadeIn();
-}
-
-function suscriptionCreatePeriodChanged()
-{
-	var amount = $("#suscripton-create-period option:selected").attr("amount");
-	$("#suscripton-create-period-amount").text(amount);
-	$("#suscripton-create-period-amount").show();
-}
-
-function suscriptionPeriodAmountsLoad()
-{
-	$.get("services/GetSuscriptionPeriodAmounts.jsp", function(data, status){
-		var data = eval(data);
-		console.log(data[0].id);
-  	});
-}
-
-function suscriptionPeriodsLoad()
-{
-	$.get("services/GetSuscriptionPeriods.jsp", function(data, status){
-		var data = eval(data);
-		$("#suscripton-create-period").empty();
- 		$.each(data, function(index) {
- 			$("#suscripton-create-period").append("<option value='" + data[index].id +"' amount='" + data[index].amount +"'>" + data[index].description + "</option>");
+			loadingHide();
+			$("#error").popup("open");
+			$("#login_form")[0].reset();
 		});
-  	});
 }
 
+function logout()
+{
+	loadingShow();
+	$("#content").load("Logout.jsp", function() {
+  		home();
+		loadingHide();
+	});
+}
+
+function subscriptionCreateSearchMember()
+{
+	var filter = $("#subscription-create-member").val()
+	goTo("SubscriptionCreateMember.jsp?" + filter);
+}
