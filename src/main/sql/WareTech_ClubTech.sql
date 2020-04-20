@@ -73,5 +73,6 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (13, 1, 1, 13),
     (14, 1, 1, 14),
     (15, 1, 1, 15),
-    (16, 1, 1, 16)
+    (16, 1, 1, 16),
+    (17, 1, 2, 15)
   ;

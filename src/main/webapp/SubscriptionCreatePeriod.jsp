@@ -1,8 +1,8 @@
 <%@ page import="com.WareTech.ClubTech.entity.Member" %>
 <%@ page import="com.WareTech.ClubTech.facade.MemberFacade" %>
 <%
-String id = request.getQueryString();
-if (id == null)
+String memberId = request.getQueryString();
+if (memberId == null)
 {
 %>
 <%@include file="Error.jsp"%>
@@ -10,7 +10,7 @@ if (id == null)
 	return;
 }
 
-Member member = MemberFacade.find(Long.parseLong(id));
+Member member = MemberFacade.find(Long.parseLong(memberId));
 %>
 <div>
 	<h3>Pagar cuota</h3>
