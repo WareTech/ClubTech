@@ -12,16 +12,11 @@ public class DatabaseSecurityService
     public boolean checkAuthorization(
         User user,
         String url
-    )
+        )
     {
         System.out.println(String.format("DatabaseSecurityService#checkAuthorization user=%s url=%s", user, url));
 
         if (url == null || "".equals(url))
-        {
-            return true;
-        }
-
-        if (url.startsWith("_"))
         {
             return true;
         }
@@ -53,6 +48,18 @@ public class DatabaseSecurityService
     @Override
     public User login(String username, String password)
     {
-        return null;
+        try {
+            User user = (User) Database.getCurrentSession()
+                    .createQuery("FROM User WHERE username = :username AND password = :password")
+                    .setParameter("username", username)
+                    .setParameter("password", password)
+                    .uniqueResult();
+
+            return user;
+        }
+        catch(Exception exception)
+        {
+            return null;
+        }
     }
 }

@@ -58,5 +58,10 @@ function logout()
 function subscriptionCreateSearchMember()
 {
 	var filter = $("#subscription-create-member").val()
+	if (filter == "")
+	{
+		$("#error").popup("open");
+		return;
+	}
 	goTo("SubscriptionCreateMember.jsp?" + filter);
 }

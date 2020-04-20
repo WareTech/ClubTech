@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.WareTech.ClubTech.Context;
 import com.WareTech.ClubTech.entity.User;
-import com.WareTech.ClubTech.service.SecurityService;
 import com.WareTech.ClubTech.Utils;
 
 public class SecurityFilter 

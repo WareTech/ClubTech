@@ -35,7 +35,7 @@ public class BasicSecurityService
             return false;
         }
 
-        return user.getAccessList().contains(url);
+        return USER_ACCESS_MAP.get(user.getUsername()).contains(url);
     }
 
     /**
@@ -59,7 +59,6 @@ public class BasicSecurityService
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setAccessList(USER_ACCESS_MAP.get(username));
 
         return user;
     }

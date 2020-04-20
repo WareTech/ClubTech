@@ -13,6 +13,10 @@ filter = filter.trim().toLowerCase();
 <div>
 	<h3>Pagar cuota</h3>
 
+	<div data-role="popup" id="error">
+		<p>Busq&uacute;eda no v&aacute;lida</p>
+	</div>
+
 	<div id="subscription-create-member-panel">
 		<label for="subscription-create-member">Socio:</label>
 		<input type="text" name="subscription-create-member" id="subscription-create-member" value="<%=filter%>">

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+	    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	    <property name="hibernate.connection.url">jdbc:mysql://localhost/WareTech_ClubTech</property>
+	    <property name="hibernate.connection.username">root</property>
+	    <property name="hibernate.connection.password">root</property>
+	    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="connection.pool_size">4</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="current_session_context_class">thread</property>
+        <property  name="show_sql">true</property>
+
+        <!-- Mapping Entities -->
+        <mapping class="com.WareTech.ClubTech.entity.Access"/>
+        <mapping class="com.WareTech.ClubTech.entity.User"/>
+        <mapping class="com.WareTech.ClubTech.entity.UserAccess"/>
+
+        <!--
+        <mapping class="com.WareTech.ClubTech.entity.Alert"/>
+        <mapping class="com.WareTech.ClubTech.entity.AlertUser"/>
+        <mapping class="com.WareTech.ClubTech.entity.Configuration"/>
+        <mapping class="com.WareTech.ClubTech.entity.Member"/>
+        <mapping class="com.WareTech.ClubTech.entity.Note"/>
+        <mapping class="com.WareTech.ClubTech.entity.Payment"/>
+        <mapping class="com.WareTech.ClubTech.entity.Subscription"/>
+        -->
+    </session-factory>
+
+</hibernate-configuration>

@@ -57,6 +57,7 @@ enviar mensaje con la facturación (por mail u otra vía de comunicación?)
 
 
 Cobranzas:
+
 registro de pagos por los distintos medios
 generación de recibos de pago en el acto de cobranza (Recibos “X”)
 generación de ajustes de cobranza
@@ -88,3 +89,6 @@ rendicion de caja
 reporte de ingresos
 reporte de egresos
 
+------------------------------------------------------------------------------------------------------------------------
+mysql -uroot -proot
+use WareTech_ClubTech;

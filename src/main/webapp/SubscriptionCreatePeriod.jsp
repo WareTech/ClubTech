@@ -17,7 +17,7 @@ Member member = MemberFacade.find(Long.parseLong(id));
 
 	<div id="subscription-create-member-panel">
 		<label for="subscription-create-member">Socio:</label>
-		<input type="text" name="subscription-create-member" id="subscription-create-member" value="<%=member.getFirstname() + " " + member.getLastname()%>">
+		<input type="text" name="subscription-create-member" id="subscription-create-member" value="<%=member.getFirstname() + " " + member.getLastname()%>" readonly="true">
 		<button class="ui-btn ui-corner-all" id="subscription-create-member-serach" onclick="javascript:goTo('SubscriptionCreateMember.jsp'); return;">Buscar</button>
 	</div>
 

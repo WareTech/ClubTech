@@ -9,10 +9,10 @@ public class UserAccess
     extends AbstractPersistentObject
 {
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name="user")
 	protected User user;
 	@ManyToOne
-	@JoinColumn(name="accessId")
+	@JoinColumn(name="access")
 	protected Access access;
 
 	/**
