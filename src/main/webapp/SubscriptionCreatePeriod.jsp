@@ -1,5 +1,6 @@
 <%@ page import="com.WareTech.ClubTech.entity.Member" %>
 <%@ page import="com.WareTech.ClubTech.facade.MemberFacade" %>
+<%@ page import="com.WareTech.ClubTech.Database" %>
 <%
 String memberId = request.getQueryString();
 if (memberId == null)
@@ -10,7 +11,7 @@ if (memberId == null)
 	return;
 }
 
-Member member = MemberFacade.find(Long.parseLong(memberId));
+Member member = (Member) Database.getCurrentSession().get(Member.class, Long.parseLong(memberId));
 %>
 <div>
 	<h3>Pagar cuota</h3>

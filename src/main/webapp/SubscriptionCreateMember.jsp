@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.facade.MemberFacade" %>
 <%@ page import="com.WareTech.ClubTech.entity.Member" %>
+<%@ page import="com.WareTech.ClubTech.Database" %>
 
 <%
 String filter = request.getQueryString();
@@ -28,11 +29,21 @@ filter = filter.trim().toLowerCase();
 <%
 if (!"".equals(filter))
 {
-	List<Member> memberList = MemberFacade.filter(filter);
+	filter = "%" + filter + "%";
+	List<Member> memberList = Database.getCurrentSession()
+			.createQuery("FROM Member WHERE firstname LIKE :firstname OR lastname LIKE :lastname OR dni LIKE :dni")
+			.setParameter("firstname", filter)
+			.setParameter("lastname", filter)
+			.setParameter("dni", filter)
+			.list();
 	for(Member member : memberList)
 	{
 %>
-			<li><a href="javascript:goTo('SubscriptionCreatePeriod.jsp?<%=member.getId()%>');"><%=member.getFirstname() + " " + member.getLastname()%></a></li>
+			<li>
+				<a href="javascript:goTo('SubscriptionCreatePeriod.jsp?<%=member.getId()%>');">
+				<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;(<%=member.getDni()%>)
+				</a>
+			</li>
 <%
 	}
 }

@@ -50,14 +50,20 @@
 		<br>
 
 <%
-Parameter paymentType = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.PAYMENT_TYPE).uniqueResult();
+Parameter paymentType = (Parameter) Database.getCurrentSession()
+		.createQuery("FROM Parameter WHERE value = :value")
+		.setParameter("value", Parameter.PAYMENT_TYPE)
+		.uniqueResult();
 if (paymentType != null)
 {
 %>
 		<label for="member-create-payement-method"><%=paymentType.getDescription()%></label>
 		<select name="member-create-payement-method" id="member-create-payement-method">
 <%
-	List<Parameter> paymentTypeList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", paymentType).list();
+	List<Parameter> paymentTypeList = Database.getCurrentSession()
+			.createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
+			.setParameter("parent", paymentType)
+			.list();
 	for(Parameter childPaymentType : paymentTypeList)
 	{
 %>
@@ -71,14 +77,19 @@ if (paymentType != null)
 %>
 
 <%
-Parameter discount = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.DISCOUNT).uniqueResult();
+Parameter discount = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value")
+		.setParameter("value", Parameter.DISCOUNT)
+		.uniqueResult();
 if (paymentType != null)
 {
 %>
 		<label for="member-create-discount"><%=discount.getDescription()%></label>
 		<select name="member-create-discount" id="member-create-discount">
 <%
-	List<Parameter> discountList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", discount).list();
+	List<Parameter> discountList = Database.getCurrentSession()
+			.createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
+			.setParameter("parent", discount)
+			.list();
 	for(Parameter childDiscount : discountList)
 	{
 %>
@@ -92,14 +103,20 @@ if (paymentType != null)
 %>
 
 <%
-Parameter activity = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.ACTIVITY).uniqueResult();
+Parameter activity = (Parameter) Database.getCurrentSession()
+		.createQuery("FROM Parameter WHERE value = :value")
+		.setParameter("value", Parameter.ACTIVITY)
+		.uniqueResult();
 if (activity != null)
 {
 %>
 		<label for="member-create-activity"><%=activity.getDescription()%></label>
 		<select name="member-create-activity" id="member-create-activity">
 <%
-	List<Parameter> activityList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", activity).list();
+	List<Parameter> activityList = Database.getCurrentSession()
+			.createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
+			.setParameter("parent", activity)
+			.list();
 	for(Parameter childActivity : activityList)
 	{
 %>
@@ -113,14 +130,20 @@ if (activity != null)
 %>
 
 <%
-Parameter status = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.STATUS).uniqueResult();
+Parameter status = (Parameter) Database.getCurrentSession()
+		.createQuery("FROM Parameter WHERE value = :value")
+		.setParameter("value", Parameter.STATUS)
+		.uniqueResult();
 if (status != null)
 {
 %>
 		<label for="member-create-status"><%=status.getDescription()%></label>
 		<select name="member-create-status" id="member-create-status">
 <%
-	List<Parameter> statusList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", status).list();
+	List<Parameter> statusList = Database.getCurrentSession()
+			.createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
+			.setParameter("parent", status)
+			.list();
 	for(Parameter childStatus : statusList)
 	{
 %>
