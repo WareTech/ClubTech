@@ -63,7 +63,7 @@ public class MemberFacade
         member.setId(7l);
         member.setFirstname("Katia");
         member.setLastname("Olchansky");
-        member.setDni("38952726");
+        member.setDni("40511381");
         memberList.add(member);
 
         return memberList;

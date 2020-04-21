@@ -62,4 +62,8 @@
 	#page2 {
 		display: none;
 	}
+
+	.member-create-button {
+		padding-top: 10px;
+	}
 }

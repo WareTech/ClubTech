@@ -1,8 +1,8 @@
 package com.WareTech.ClubTech.entity;
 
-import com.WareTech.ClubTech.Context;
-
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Member
@@ -11,10 +11,25 @@ public class Member
     protected String firstname;
     protected String lastname;
     protected String dni;
-    protected String birthdate;
-    protected String category;
-    protected String year;
-    protected String status;
+    protected String birthday;
+    protected String phone;
+    protected String address;
+    protected String email;
+    protected String father;
+    protected String mother;
+    @ManyToOne
+    @JoinColumn(name="paymentType")
+    protected Parameter paymentType;
+    @ManyToOne
+    @JoinColumn(name="discount")
+    protected Parameter discount;
+    @ManyToOne
+    @JoinColumn(name="activity")
+    protected Parameter activity;
+    @ManyToOne
+    @JoinColumn(name="status")
+    protected Parameter status;
+    protected String note;
 
     public String getFirstname() {
         return firstname;
@@ -34,43 +49,90 @@ public class Member
     public void setDni(String dni) {
         this.dni = dni;
     }
-    public String getBirthdate() {
-        return birthdate;
+    public String getBirthday() {
+        return birthday;
     }
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
-    public String getCategory() {
-        return category;
+
+    public String getPhone() {
+        return phone;
     }
-    public void setCategory(String category) {
-        this.category = category;
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    public String getYear() {
-        return year;
+
+    public String getAddress() {
+        return address;
     }
-    public void setYear(String year) {
-        this.year = year;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
-    public String getStatus() {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFather() {
+        return father;
+    }
+
+    public void setFather(String father) {
+        this.father = father;
+    }
+
+    public String getMother() {
+        return mother;
+    }
+
+    public void setMother(String mother) {
+        this.mother = mother;
+    }
+
+    public Parameter getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(Parameter paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Parameter getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Parameter discount) {
+        this.discount = discount;
+    }
+
+    public Parameter getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Parameter activity) {
+        this.activity = activity;
+    }
+
+    public Parameter getStatus() {
         return status;
     }
-    public void setStatus(String status) {
+
+    public void setStatus(Parameter status) {
         this.status = status;
     }
 
-    public String getFriendlyBirthdate()
-            throws Exception
-    {
-        if (this.getBirthdate() == null)
-        {
-            return null;
-        }
+    public String getNote() {
+        return note;
+    }
 
-        return Context.DATE_FORMATER.format(
-                Context.DATE_FORMATER_ISO.parse(
-                        this.getBirthdate()
-                )
-        );
+    public void setNote(String note) {
+        this.note = note;
     }
 }

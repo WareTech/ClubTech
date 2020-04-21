@@ -1,7 +1,19 @@
-<div> 
-	<h3>Crear Socio</h3>
+<%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
+<%@ page import="com.WareTech.ClubTech.Database" %>
+<%@ page import="java.util.List" %>
+<div data-role="tabs" id="tabs">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#personal" data-ajax="false" class="ui-btn-active">Info</a></li>
+			<li><a href="#contact" data-ajax="false">Contacto</a></li>
+			<li><a href="#payment" data-ajax="false">Pago</a></li>
+			<li><a href="#note" data-ajax="false">Nota</a></li>
+		</ul>
+	</div>
 
-	<div id="member-create-panel">
+	<div id="personal">
+		<h3></h3>
+
 		<label for="member-create-firstname">Nombre:</label>
 		<input type="text" name="member-create-firstname" id="member-create-firstname" value="">
 
@@ -13,6 +25,10 @@
 
 		<label for="member-create-dni">DNI:</label>
 		<input type="text" name="member-create-dni" id="member-create-dni" value="">
+	</div>
+
+	<div id="contact">
+		<h3></h3>
 
 		<label for="member-create-phone">Tel&eacute;fono:</label>
 		<input type="text" name="member-create-phone" id="member-create-phone" value="">
@@ -28,70 +44,106 @@
 
 		<label for="member-create-mother-info">Nombre y Apellido de la Madre:</label>
 		<input type="text" name="member-create-mother-info" id="member-create-mother-info" value="">
+	</div>
 
-		<label for="member-create-payement-method">Medio de Pago:</label>
+	<div id="payment">
+		<br>
+
+<%
+Parameter paymentType = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.PAYMENT_TYPE).uniqueResult();
+if (paymentType != null)
+{
+%>
+		<label for="member-create-payement-method"><%=paymentType.getDescription()%></label>
 		<select name="member-create-payement-method" id="member-create-payement-method">
-			<option value="manualy">Cobrador</option>
-			<option value="account">D&eacute;bito en Cuenta</option>
-			<option value="credit-card">D&eacute;bito Autom&aacute;tico</option>
+<%
+	List<Parameter> paymentTypeList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", paymentType).list();
+	for(Parameter childPaymentType : paymentTypeList)
+	{
+%>
+			<option value="<%=childPaymentType.getValue()%>"><%=childPaymentType.getDescription()%></option>
+<%
+	}
+%>
 		</select>
+<%
+}
+%>
 
-		<label for="member-create-discount">Becado:</label>
+<%
+Parameter discount = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.DISCOUNT).uniqueResult();
+if (paymentType != null)
+{
+%>
+		<label for="member-create-discount"><%=discount.getDescription()%></label>
 		<select name="member-create-discount" id="member-create-discount">
-			<option value="no">No</option>
-			<optgroup label="S&iacute;">
-				<option value="25">25%</option>
-				<option value="50">50%</option>
-				<option value="75">75%</option>
-				<option value="100">100%</option>
+<%
+	List<Parameter> discountList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", discount).list();
+	for(Parameter childDiscount : discountList)
+	{
+%>
+			<option value="<%=childDiscount.getValue()%>"><%=childDiscount.getDescription()%></option>
+<%
+	}
+%>
 		</select>
+<%
+}
+%>
 
-		<label for="member-create-activity">Actividad:</label>
+<%
+Parameter activity = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.ACTIVITY).uniqueResult();
+if (activity != null)
+{
+%>
+		<label for="member-create-activity"><%=activity.getDescription()%></label>
 		<select name="member-create-activity" id="member-create-activity">
-			<option value="member">Sin Actividad</option>
-			<option value="zumba">Zumba</option>
-			<option value="gym">Gimnasia</option>
-			<optgroup label="F&uacute;tbol Femenino">
-				<option value="Primera">Primera</option>
-				<option value="Tercera">Tercera</option>
-				<option value="Sub-18">Sub-18</option>
-				<option value="Sub-17">Sub-17</option>
-				<option value="Sub-16">Sub-16</option>
-				<option value="Sub-14">Sub-14</option>
-				<option value="Sub-10">Sub-10</option>
-			<optgroup label="F&uacute;tbol Infantiles">
-				<option value="2007">2007</option>
-				<option value="2008">2008</option>
-				<option value="2009">2009</option>
-				<option value="2010">2010</option>
-				<option value="2011">2011</option>
-				<option value="2012/2013">2012/2013</option>
-			<optgroup label="F&uacute;tbol Juveniles">
-				<option value="5ta">5ta</option>
-				<option value="6ta">6ta</option>
-				<option value="7ma">7ma</option>
-				<option value="8va">8va</option>
-				<option value="9na">9na</option>
-				<option value="Pre 9na">Pre 9na</option>
-			<optgroup label="F&uacute;tbol Mayores">
-				<option value="Primera">Primera</option>
-				<option value="Tercera">Tercera</option>
-				<option value="Cuarta">Cuarta</option>
-				<option value="Senior">Senior</option>
+<%
+	List<Parameter> activityList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", activity).list();
+	for(Parameter childActivity : activityList)
+	{
+%>
+			<option value="<%=childActivity.getValue()%>"><%=childActivity.getDescription()%></option>
+<%
+	}
+%>
 		</select>
-		
-		<label for="member-create-state"">Estado:</label>
-		<select name="member-create-state" id="member-create-state">
-			<option value="Fichado">Fichado</option>
-			<option value="Listado">Listado</option>
-			<option value="Habilitado">Habilitado</option>
-			<option value="Agregado">Agregado</option>
-			<option value="Pre Inscripcion">Pre Inscripci&oacute;n</option>
+<%
+}
+%>
+
+<%
+Parameter status = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value").setParameter("value", Parameter.STATUS).uniqueResult();
+if (status != null)
+{
+%>
+		<label for="member-create-status"><%=status.getDescription()%></label>
+		<select name="member-create-status" id="member-create-status">
+<%
+	List<Parameter> statusList = Database.getCurrentSession().createQuery("FROM Parameter WHERE parent = :parent ORDER BY position").setParameter("parent", status).list();
+	for(Parameter childStatus : statusList)
+	{
+%>
+			<option value="<%=childStatus.getValue()%>"><%=childStatus.getDescription()%></option>
+<%
+	}
+%>
 		</select>
+<%
+}
+%>
+	</div>
+
+	<div id="note">
+		<h3></h3>
 
 		<label for="member-create-note">Nota:</label>
-		<input type="text" name="member-create-note" id="member-create-note" value="">
+		<textarea cols="40" rows="8" name="member-create-note" id="member-create-note"></textarea>
+	</div>
 
+	<br>
+
+	<div class="member-create-button">
 		<button class="ui-btn ui-corner-all" id="member-create" onclick="javascript:goTo('MemberView.jsp'); return;">Crear Socio</button>
 	</div>
 </div>

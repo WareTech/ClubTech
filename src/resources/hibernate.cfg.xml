@@ -18,6 +18,8 @@
 
         <!-- Mapping Entities -->
         <mapping class="com.WareTech.ClubTech.entity.Access"/>
+        <mapping class="com.WareTech.ClubTech.entity.Member"/>
+        <mapping class="com.WareTech.ClubTech.entity.Parameter"/>
         <mapping class="com.WareTech.ClubTech.entity.User"/>
         <mapping class="com.WareTech.ClubTech.entity.UserAccess"/>
 

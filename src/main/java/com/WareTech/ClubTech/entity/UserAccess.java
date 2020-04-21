@@ -27,8 +27,8 @@ public class UserAccess
 	 * @param user
 	 */
 	public void setUser(
-			User user
-			) 
+		User user
+		)
 	{
 		this.user = user;
 	}
@@ -45,8 +45,8 @@ public class UserAccess
 	 * @param access
 	 */
 	public void setAccess(
-			Access access
-			) 
+		Access access
+		)
 	{
 		this.access = access;
 	}

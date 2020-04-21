@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS Member (
     father varchar(255) NULL,
     mother varchar(255) NULL,
     paymentType bigint(20) NOT NULL,
-    discount bigint(20) NULL,
-    activity bigint(20) NULL,
+    discount bigint(20) NOT NULL,
+    activity bigint(20) NOT NULL,
     status bigint(20) NOT NULL,
     note varchar(255) NULL,
     PRIMARY KEY  (id),
@@ -149,5 +149,4 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (13, 1, 1, 13),
     (14, 1, 1, 14),
     (15, 1, 1, 15),
-    (16, 1, 1, 16),
-    (17, 1, 2, 15);
+    (16, 1, 1, 16);
