@@ -146,3 +146,14 @@ function userAccessSave()
 			$("#error").popup("open");
 		});
 }
+
+function memberSearchFilter()
+{
+	var filter = $("#member-search-filter").val()
+	if (filter == "")
+	{
+		$("#error").popup("open");
+		return;
+	}
+	goTo("MemberSearch.jsp?" + filter);
+}
