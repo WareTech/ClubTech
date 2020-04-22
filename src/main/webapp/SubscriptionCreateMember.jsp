@@ -31,7 +31,7 @@ if (!"".equals(filter))
 {
 	filter = "%" + filter + "%";
 	List<Member> memberList = Database.getCurrentSession()
-			.createQuery("FROM Member WHERE firstname LIKE :firstname OR lastname LIKE :lastname OR dni LIKE :dni")
+			.createQuery("FROM Member WHERE firstname LIKE :firstname OR lastname LIKE :lastname OR dni LIKE :dni ORDER BY firstname ASC, lastname ASC")
 			.setParameter("firstname", filter)
 			.setParameter("lastname", filter)
 			.setParameter("dni", filter)
@@ -41,7 +41,7 @@ if (!"".equals(filter))
 %>
 			<li>
 				<a href="javascript:goTo('SubscriptionCreatePeriod.jsp?<%=member.getId()%>');">
-				<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;(<%=member.getDni()%>)
+				<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;<%=member.getDni() == null ? "" : "(" + member.getDni() +")"%>
 				</a>
 			</li>
 <%

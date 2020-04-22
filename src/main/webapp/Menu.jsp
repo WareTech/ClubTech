@@ -75,9 +75,12 @@
 
 <%if (Utils.checkAuthorization(request, response, new String[]{"DEVELOPER_ACCESS"})) {%>
 	<li data-role="list-divider">Desarrollo</li>
-	<%if (Utils.checkAuthorization(request, response, "Unauthorized.jsp")) {%>
+		<%if (Utils.checkAuthorization(request, response, "ProcessList.jsp")) {%>
+		<li><a href="javascript:goTo('ProcessList.jsp');" data-rel="close">Procesos</a></li>
+		<%}%>
+		<%if (Utils.checkAuthorization(request, response, "Unauthorized.jsp")) {%>
 		<li><a href="javascript:goTo('Unauthorized.jsp');" data-rel="close">Acceso NO autorizado</a></li>
-	<%}%>
+		<%}%>
 	<%if (Utils.checkAuthorization(request, response, "Error.jsp")) {%>
 		<li><a href="javascript:goTo('Error.jsp');" data-rel="close">Error</a></li>
 	<%}%>

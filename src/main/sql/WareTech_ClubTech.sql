@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS Member (
     version bigint(20) NOT NULL default '0',
     firstname varchar(255) NOT NULL,
     lastname varchar(255) NOT NULL,
-    dni varchar(255) NOT NULL,
-    birthday varchar(8) NOT NULL,
+    dni varchar(255) NULL,
+    birthday varchar(8) NULL,
     phone varchar(255) NULL,
     address varchar(255) NULL,
     email varchar(255) NULL,
@@ -64,7 +64,6 @@ CREATE TABLE IF NOT EXISTS Member (
     status bigint(20) NOT NULL,
     note varchar(255) NULL,
     PRIMARY KEY  (id),
-    UNIQUE KEY UK_Member_dni (dni),
     CONSTRAINT FK_Member_paymentType FOREIGN KEY (paymentType) REFERENCES Parameter (id),
     CONSTRAINT FK_Member_discount FOREIGN KEY (discount) REFERENCES Parameter (id),
     CONSTRAINT FK_Member_activity FOREIGN KEY (activity) REFERENCES Parameter (id),
@@ -107,7 +106,8 @@ INSERT INTO Parameter (id, version,value, description, parent, position) VALUES
     (402, 1, 'STATUS_LISTED', 'Listado', 400, null),
     (403, 1, 'STATUS_AVAILABLE', 'Habilitado', 400, null),
     (404, 1, 'STATUS_ADDED', 'Agregado', 400, null),
-    (405, 1, 'STATUS_PRE_SIGNED', 'Pre Inscripción', 400, null);
+    (405, 1, 'STATUS_PRE_SIGNED', 'Pre Inscripción', 400, null),
+    (406, 1, 'STATUS_SCHOOL', 'Escuelita', 400, null);
 
 INSERT INTO User (id, version,username, password) VALUES
     (1, 1, 'admin', 'admin'),
@@ -131,7 +131,9 @@ INSERT INTO Access (id, version,value, description, position) VALUES
     (13, 1, 'StoreTicketResume.jsp', 'StoreTicketResume', null),
     (14, 1, 'Activities.jsp', 'Activities', null),
     (15, 1, 'UserList.jsp', 'UserList', null),
-    (16, 1, 'AccessList.jsp', 'AccessList', null);
+    (16, 1, 'AccessList.jsp', 'AccessList', null),
+    (17, 1, 'MembersLoad.jsp', 'MembersList', null),
+    (18, 1, 'ProcessList.jsp', 'ProcessList', null);
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 1, 1, 1),
@@ -149,4 +151,6 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (13, 1, 1, 13),
     (14, 1, 1, 14),
     (15, 1, 1, 15),
-    (16, 1, 1, 16);
+    (16, 1, 1, 16),
+    (17, 1, 1, 17),
+    (18, 1, 1, 18);

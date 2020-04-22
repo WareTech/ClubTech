@@ -22,6 +22,22 @@ function load(url, container)
 	});
 }
 
+function callTo(url)
+{
+	$.get(
+		url,
+		function(data, status) {
+			if (data == 1) {
+				loadingHide();
+				$("#success").popup("open");
+				return;
+			}
+
+			loadingHide();
+			$("#error").popup("open");
+		});
+}
+
 function goTo(url)
 {
 	load(url, "#content");

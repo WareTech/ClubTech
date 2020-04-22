@@ -1,0 +1,1 @@
+mysql -uroot -proot < src\main\sql\WareTech_ClubTech.sql
