@@ -82,7 +82,7 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
         <h3></h3>
 
         <label for="member-update-phone">Tel&eacute;fono:</label>
-        <input type="text" name="phone" id="member-update-phone" value="<%=member.getPhone() == null ? "" : member.getPhone()%>">
+        <input type="number" name="phone" id="member-update-phone" value="<%=member.getPhone() == null ? "" : member.getPhone()%>">
 
         <label for="member-update-address">Direcci&oacute;n:</label>
         <input type="text" name="address" id="member-update-address" value="<%=member.getAddress() == null ? "" : member.getAddress()%>">

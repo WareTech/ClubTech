@@ -10,13 +10,12 @@ if (filter == null)
 }
 filter = filter.trim().toLowerCase();
 %>
+
+<div data-role="popup" id="error">
+    <p>No se pudo actualizar el usuario</p>
+</div>
+
 <div>
-    <h3>Usuarios</h3>
-
-    <div data-role="popup" id="error">
-        <p>Busq&uacute;eda no v&aacute;lida</p>
-    </div>
-
     <div id="user-list-panel">
         <label for="user-list">Usuario:</label>
         <input type="text" name="user-list" id="user-list" value="<%=filter%>">

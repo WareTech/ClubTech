@@ -23,9 +23,18 @@ if (user == null)
 }
 %>
 
-<input type="hidden" name="user-edit-id" id="user-edit-id" value="<%=user.getId()%>">
+<div data-role="popup" id="error">
+    <p>Error al actualizar</p>
+</div>
 
-<div data-role="tabs" id="tabs">
+<div data-role="popup" id="success">
+    <p>Usuario actualizado</p>
+</div>
+
+<form data-role="tabs" id="user-edit" onsubmit="return false;">
+
+    <input type="hidden" name="userId" id="user-edit-id" value="<%=user.getId()%>">
+
     <div data-role="navbar">
         <ul>
             <li><a href="#info" data-ajax="false" class="ui-btn-active">Info</a></li>
@@ -37,22 +46,21 @@ if (user == null)
     <div id="info">
         <h3></h3>
 
-        <div data-role="popup" id="error">
-            <p>Error al actualizar</p>
-        </div>
-
-        <div data-role="popup" id="success">
-            <p>Usuario actualizado</p>
-        </div>
-
         <label for="user-edit-username">Usuario</label>
-        <input type="text" name="user-edit-username" id="user-edit-username" value="<%=user.getUsername()%>">
+        <input type="text" name="username" id="user-edit-username" value="<%=user.getUsername()%>">
         <button class="ui-btn ui-corner-all" id="user-edit-serach" onclick="javascript:goTo('UserList.jsp'); return;">Buscar</button>
         <label for="user-edit-password1">Clave</label>
-        <input type="password" name="user-edit-password1" id="user-edit-password1" value="">
+        <input type="password" name="password1" id="user-edit-password1" value="">
         <label for="user-edit-password2">Repita la Clave</label>
-        <input type="password" name="user-edit-password2" id="user-edit-password2" value="">
-        <button class="ui-btn ui-corner-all" id="user-edit-save" onclick="javascript:userEditSave(); return;">Guardar</button>
+        <input type="password" name="password2" id="user-edit-password2" value="">
+        <div class="member-create-button ui-grid-a">
+            <div class="ui-block-a">
+                <button class="ui-btn ui-corner-all" id="user-edit-save" onclick="javascript:userEditSave(); return;">Guardar</button>
+            </div>
+            <div class="ui-block-b">
+                <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
+            </div>
+        </div>
     </div>
 
     <div id="access">
@@ -73,5 +81,5 @@ for(Access access : accessList)
         </fieldset>
         <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:userAccessSave(); return;">Guardar</button>
     </div>
-</div>
+</form>
 

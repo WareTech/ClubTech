@@ -1,6 +1,5 @@
 package com.WareTech.ClubTech;
 
-import com.WareTech.ClubTech.service.DatabaseSecurityService;
 import com.WareTech.ClubTech.service.SecurityService;
 
 import java.text.DateFormat;
@@ -26,7 +25,7 @@ public class Context
         return APPLICATION_NAME;
     }
 
-    static protected SecurityService SECURITY_SERVICE = new DatabaseSecurityService();
+    static protected SecurityService SECURITY_SERVICE = new SecurityService();
     static public SecurityService getSecurityService()
     {
         return SECURITY_SERVICE;

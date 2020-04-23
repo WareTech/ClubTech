@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.*;
 
 public class BasicSecurityService
-    implements SecurityService
+    extends SecurityService
 {
     final static public String ACCESS_LIST = "ACCESS_LIST";
 

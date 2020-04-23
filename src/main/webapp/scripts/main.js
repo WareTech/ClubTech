@@ -96,23 +96,14 @@ function userListSearch()
 
 function userEditSave()
 {
-	var userId = $("#user-edit-id").val();
-	var username = $("#user-edit-username").val();
-	var password1 = $("#user-edit-password1").val();
-	var password2 = $("#user-edit-password2").val();
-
-	if (password1 != password2)
-	{
-		$("#error").popup("open");
-		return;
-	}
-
 	loadingShow();
 	$.post(
 		"services/UserUpdate.jsp",
-		{userId:userId, username:username, password:password1},
-		function(data, status) {
-			if (data == 1) {
+		$("#user-edit").serialize(),
+		function(data, status)
+		{
+			if (data == 1)
+			{
 				loadingHide();
 				$("#success").popup("open");
 				return;
@@ -120,7 +111,8 @@ function userEditSave()
 
 			loadingHide();
 			$("#error").popup("open");
-		});
+		}
+	);
 }
 
 function userAccessSave()
@@ -162,6 +154,26 @@ function memberUpdate()
 	$.post(
 		"services/MemberUpdate.jsp",
 		$("#member-edit").serialize(),
+		function(data, status)
+		{
+			if (data == 1)
+			{
+				loadingHide();
+				$("#success").popup("open");
+				return;
+			}
+
+			loadingHide();
+			$("#error").popup("open");
+		}
+	);
+}
+
+function memberCreate()
+{
+	$.post(
+		"services/MemberCreate.jsp",
+		$("#member-create").serialize(),
 		function(data, status)
 		{
 			if (data == 1)
