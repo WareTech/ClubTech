@@ -96,6 +96,14 @@ function userListSearch()
 
 function userEditSave()
 {
+	var password1 = $("#user-edit-password1").val();
+	var password2 = $("#user-edit-password2").val();
+	if (password1 != password2)
+	{
+		$("#error-wrong-password").popup("open");
+		return;
+	}
+
 	loadingShow();
 	$.post(
 		"services/UserUpdate.jsp",

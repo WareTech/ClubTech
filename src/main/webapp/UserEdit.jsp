@@ -27,6 +27,10 @@ if (user == null)
     <p>Error al actualizar</p>
 </div>
 
+<div data-role="popup" id="error-wrong-password">
+    <p>Las claves no coinciden</p>
+</div>
+
 <div data-role="popup" id="success">
     <p>Usuario actualizado</p>
 </div>
