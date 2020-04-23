@@ -23,11 +23,10 @@ if (user == null)
 }
 %>
 
-<div>
-    <ul data-role="listview" data-inset="true" data-divider-theme="a">
-        <li data-role="list-divider">Usuario</li>
-        <li><%=user.getUsername()%></li>
-        <li data-role="list-divider">Accesos</li>
+<ul data-role="listview" data-inset="true" data-divider-theme="a">
+    <li data-role="list-divider">Usuario</li>
+    <li><%=user.getUsername()%></li>
+    <li data-role="list-divider">Accesos</li>
 <%
 List<Access> accessList = Database.getCurrentSession()
     .createQuery("SELECT access FROM UserAccess WHERE user = :user")
@@ -36,26 +35,25 @@ List<Access> accessList = Database.getCurrentSession()
 for(Access access : accessList)
 {
 %>
-        <li><%=access.getDescription()%></li>
+    <li><%=access.getDescription()%></li>
 <%
 }
 
 if (accessList.size() == 0)
 {
 %>
-        <li>No hay elementos para mostrar</li>
+    <li>No hay accesos para mostrar</li>
 <%
 }
 %>
-    </ul>
+</ul>
 
-    <div class="member-create-button ui-grid-a">
-        <div class="ui-block-a">
-            <button class="ui-btn ui-corner-all" id="user-view" onclick="javascript:goTo('UserEdit.jsp?<%=user.getId()%>'); return;">Editar</button>
-        </div>
-        <div class="ui-block-b">
-            <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
-        </div>
+<div class="member-create-button ui-grid-a">
+    <div class="ui-block-a">
+        <button class="ui-btn ui-corner-all" id="user-view" onclick="javascript:goTo('UserEdit.jsp?<%=user.getId()%>'); return;">Editar</button>
+    </div>
+    <div class="ui-block-b">
+        <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
     </div>
 </div>
 

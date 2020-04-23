@@ -138,6 +138,7 @@ function userAccessSave()
 			if (data == 1) {
 				loadingHide();
 				$("#success").popup("open");
+				goTo("UserView.jsp?" + userId);
 				return;
 			}
 
@@ -159,6 +160,7 @@ function memberSearchFilter()
 
 function memberUpdate()
 {
+	var memberId = $("#member-id").val();
 	$.post(
 		"services/MemberUpdate.jsp",
 		$("#member-edit").serialize(),
@@ -168,6 +170,7 @@ function memberUpdate()
 			{
 				loadingHide();
 				$("#success").popup("open");
+				goTo("MemverView.jsp?" + memberId);
 				return;
 			}
 
@@ -188,6 +191,7 @@ function memberCreate()
 			{
 				loadingHide();
 				$("#success").popup("open");
+				goTo("MemverView.jsp?");
 				return;
 			}
 

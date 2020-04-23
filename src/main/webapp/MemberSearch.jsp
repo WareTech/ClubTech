@@ -38,7 +38,7 @@ for(Member member : memberList)
 {
 %>
 			<li>
-				<a href="javascript:goTo('MemberEdit.jsp?<%=member.getId()%>');">
+				<a href="javascript:goTo('MemberView.jsp?<%=member.getId()%>');">
 					<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;<%=member.getDni() == null ? "" : "(" + member.getDni() +")"%>
 				</a>
 			</li>
