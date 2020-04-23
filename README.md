@@ -92,3 +92,6 @@ reporte de egresos
 ------------------------------------------------------------------------------------------------------------------------
 mysql -uroot -proot
 use WareTech_ClubTech;
+
+Encriptar User.password
+Encriptar Cookie.User.Id

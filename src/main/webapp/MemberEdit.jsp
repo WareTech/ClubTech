@@ -16,7 +16,17 @@ if (memberId == null)
 Member member = (Member) Database.getCurrentSession().get(Member.class, Long.parseLong(memberId));
 %>
 
-<div data-role="tabs" id="tabs">
+<div data-role="popup" id="error">
+    <p>Error al actualziar el socio</p>
+</div>
+
+<div data-role="popup" id="success">
+    <p>Socio actualizado con &eacute;xito</p>
+</div>
+
+<form data-role="tabs" id="member-edit" onsubmit="return false;">
+
+    <input type="hidden" name="member-id" value="<%=member.getId()%>">
 
     <div data-role="navbar">
         <ul>
@@ -30,16 +40,16 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
     <div id="personal">
         <h3></h3>
 
-        <label for="member-create-firstname">Nombre</label>
-        <input type="text" name="member-create-firstname" id="member-create-firstname" value="<%=member.getFirstname()%>">
+        <label for="member-update-firstname">Nombre</label>
+        <input type="text" name="firstname" id="member-update-firstname" value="<%=member.getFirstname()%>">
 
-        <label for="member-create-lastname">Apellido</label>
-        <input type="text" name="member-create-lastname" id="member-create-lastname" value="<%=member.getLastname()%>">
+        <label for="member-update-lastname">Apellido</label>
+        <input type="text" name="lastname" id="member-update-lastname" value="<%=member.getLastname()%>">
 
-        <label for="member-create-birthday">Fecha de Nacimiento</label>
-        <div class="ui-grid-b" id="member-create-birthday">
+        <label for="member-update-birthday">Fecha de Nacimiento</label>
+        <div class="ui-grid-b" id="member-update-birthday">
             <div class="ui-block-a">
-                <select data-mini="true" name="member-create-birthday-day">
+                <select data-mini="true" name="birthday-day">
                     <%Integer birthdayDay = member.getBirthday() == null ? null : Integer.parseInt(member.getBirthdayDay());%>
                     <%for(int day = 1; day < 32; day++){%>
                     <option value="<%=day%>" <%=birthdayDay != null && birthdayDay == day ? "selected" : ""%>><%=day%></option>
@@ -47,7 +57,7 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
                 </select>
             </div>
             <div class="ui-block-b">
-                <select data-mini="true" name="member-create-birthday-month">
+                <select data-mini="true" name="birthday-month">
                     <%Integer birthdayMonth = member.getBirthday() == null ? null : Integer.parseInt(member.getBirthdayMonth());%>
                     <%for(int month = 1; month < 13; month++){%>
                     <option value="<%=month%>"<%=birthdayMonth != null && birthdayMonth == month ? "selected" : ""%>><%=Context.MONTH[month - 1]%></option>
@@ -55,8 +65,8 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
                 </select>
             </div>
             <div class="ui-block-c">
-                <select data-mini="true" name="member-create-birthday-year">
-                    <%Integer birthdayYear = member.getBirthday() == null ? null : Integer.parseInt(member.getBirthdayYear());%>
+                <select data-mini="true" name="birthday-year">
+                    <%Integer birthdayYear = member.getBirthday() == null ? 2000 : Integer.parseInt(member.getBirthdayYear());%>
                     <%for(int year = 1920; year < 2021; year++){%>
                     <option value="<%=year%>"<%=birthdayYear != null && birthdayYear == year ? "selected" : ""%>><%=year%></option>
                     <%}%>
@@ -64,155 +74,159 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
             </div>
         </div>
 
-        <label for="member-create-dni">DNI:</label>
-        <input type="number" name="member-create-dni" id="member-create-dni" pattern="[0-9]*" value="<%=member.getDni() == null ? "" : member.getDni()%>">
+        <label for="member-update-dni">DNI:</label>
+        <input type="number" name="dni" id="member-update-dni" pattern="[0-9]*" value="<%=member.getDni() == null ? "" : member.getDni()%>">
     </div>
 
     <div id="contact">
         <h3></h3>
 
-        <label for="member-create-phone">Tel&eacute;fono:</label>
-        <input type="text" name="member-create-phone" id="member-create-phone" value="">
+        <label for="member-update-phone">Tel&eacute;fono:</label>
+        <input type="text" name="phone" id="member-update-phone" value="<%=member.getPhone() == null ? "" : member.getPhone()%>">
 
-        <label for="member-create-address">Direcci&oacute;n:</label>
-        <input type="text" name="member-create-address" id="member-create-address" value="">
+        <label for="member-update-address">Direcci&oacute;n:</label>
+        <input type="text" name="address" id="member-update-address" value="<%=member.getAddress() == null ? "" : member.getAddress()%>">
 
-        <label for="member-create-email">eMail:</label>
-        <input type="text" name="member-create-email" id="member-create-email" value="">
+        <label for="member-update-email">eMail:</label>
+        <input type="text" name="email" id="member-update-email" value="<%=member.getEmail() == null ? "" : member.getEmail()%>">
 
-        <label for="member-create-father-info">Nombre y Apellido del Padre:</label>
-        <input type="text" name="member-create-father-info" id="member-create-father-info" value="">
+        <label for="member-update-father-info">Nombre y Apellido del Padre:</label>
+        <input type="text" name="father-info" id="member-update-father-info" value="<%=member.getFather() == null ? "" : member.getFather()%>">
 
-        <label for="member-create-mother-info">Nombre y Apellido de la Madre:</label>
-        <input type="text" name="member-create-mother-info" id="member-create-mother-info" value="">
+        <label for="member-update-mother-info">Nombre y Apellido de la Madre:</label>
+        <input type="text" name="mother-info" id="member-update-mother-info" value="<%=member.getMother() == null ? "" : member.getMother()%>">
     </div>
 
     <div id="payment">
         <br>
 
-        <%
-            Parameter paymentType = (Parameter) Database.getCurrentSession()
-                    .createQuery("FROM Parameter WHERE value = :value")
-                    .setParameter("value", Parameter.PAYMENT_TYPE)
-                    .uniqueResult();
-            if (paymentType != null)
-            {
-        %>
-        <label for="member-create-payement-method"><%=paymentType.getDescription()%></label>
-        <select name="member-create-payement-method" id="member-create-payement-method">
-            <%
-                List<Parameter> paymentTypeList = Database.getCurrentSession()
-                        .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
-                        .setParameter("parent", paymentType)
-                        .list();
-                for(Parameter childPaymentType : paymentTypeList)
-                {
-            %>
-            <option value="<%=childPaymentType.getValue()%>"><%=childPaymentType.getDescription()%></option>
-            <%
-                }
-            %>
-        </select>
-        <%
-            }
-        %>
+<%
+Parameter paymentType = (Parameter) Database.getCurrentSession()
+    .createQuery("FROM Parameter WHERE value = :value")
+    .setParameter("value", Parameter.PAYMENT_TYPE)
+    .uniqueResult();
 
-        <%
-            Parameter discount = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value")
-                    .setParameter("value", Parameter.DISCOUNT)
-                    .uniqueResult();
-            if (paymentType != null)
-            {
-        %>
-        <label for="member-create-discount"><%=discount.getDescription()%></label>
-        <select name="member-create-discount" id="member-create-discount">
-            <%
-                List<Parameter> discountList = Database.getCurrentSession()
-                        .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
-                        .setParameter("parent", discount)
-                        .list();
-                for(Parameter childDiscount : discountList)
-                {
-            %>
-            <option value="<%=childDiscount.getValue()%>"><%=childDiscount.getDescription()%></option>
-            <%
-                }
-            %>
-        </select>
-        <%
-            }
-        %>
+if (paymentType != null)
+{
+%>
+        <label for="member-update-payement-method"><%=paymentType.getDescription()%></label>
+        <select name="payement-method" id="member-update-payement-method">
+<%
+List<Parameter> paymentTypeList = Database.getCurrentSession()
+    .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position ASC")
+    .setParameter("parent", paymentType)
+    .list();
 
-        <%
-            Parameter activity = (Parameter) Database.getCurrentSession()
-                    .createQuery("FROM Parameter WHERE value = :value")
-                    .setParameter("value", Parameter.ACTIVITY)
-                    .uniqueResult();
-            if (activity != null)
-            {
-        %>
-        <label for="member-create-activity"><%=activity.getDescription()%></label>
-        <select name="member-create-activity" id="member-create-activity">
-            <%
-                List<Parameter> activityList = Database.getCurrentSession()
-                        .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
-                        .setParameter("parent", activity)
-                        .list();
-                for(Parameter childActivity : activityList)
-                {
-            %>
-            <option value="<%=childActivity.getValue()%>"><%=childActivity.getDescription()%></option>
-            <%
-                }
-            %>
+    for(Parameter childPaymentType : paymentTypeList)
+    {
+%>
+            <option value="<%=childPaymentType.getId()%>" <%=childPaymentType.getId() == member.getPaymentType().getId() ? "selected" : ""%>><%=childPaymentType.getDescription()%></option>
+<%
+    }
+%>
         </select>
-        <%
-            }
-        %>
+<%
+}
+%>
 
-        <%
-            Parameter status = (Parameter) Database.getCurrentSession()
-                    .createQuery("FROM Parameter WHERE value = :value")
-                    .setParameter("value", Parameter.STATUS)
-                    .uniqueResult();
-            if (status != null)
-            {
-        %>
-        <label for="member-create-status"><%=status.getDescription()%></label>
-        <select name="member-create-status" id="member-create-status">
-            <%
-                List<Parameter> statusList = Database.getCurrentSession()
-                        .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position")
-                        .setParameter("parent", status)
-                        .list();
-                for(Parameter childStatus : statusList)
-                {
-            %>
-            <option value="<%=childStatus.getValue()%>"><%=childStatus.getDescription()%></option>
-            <%
-                }
-            %>
+<%
+Parameter discount = (Parameter) Database.getCurrentSession().createQuery("FROM Parameter WHERE value = :value")
+        .setParameter("value", Parameter.DISCOUNT)
+        .uniqueResult();
+
+if (paymentType != null)
+{
+%>
+        <label for="member-update-discount"><%=discount.getDescription()%></label>
+        <select name="discount" id="member-update-discount">
+<%
+List<Parameter> discountList = Database.getCurrentSession()
+        .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position ASC")
+        .setParameter("parent", discount)
+        .list();
+    for(Parameter childDiscount : discountList)
+    {
+%>
+            <option value="<%=childDiscount.getId()%>" <%=childDiscount.getId() == member.getDiscount().getId() ? "selected" : ""%>><%=childDiscount.getDescription()%></option>
+<%
+    }
+%>
         </select>
-        <%
-            }
-        %>
+<%
+}
+%>
+
+<%
+Parameter activity = (Parameter) Database.getCurrentSession()
+        .createQuery("FROM Parameter WHERE value = :value")
+        .setParameter("value", Parameter.ACTIVITY)
+        .uniqueResult();
+
+if (activity != null)
+{
+%>
+        <label for="member-update-activity"><%=activity.getDescription()%></label>
+        <select name="activity" id="member-update-activity">
+<%
+    List<Parameter> activityList = Database.getCurrentSession()
+            .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position ASC")
+            .setParameter("parent", activity)
+            .list();
+    for(Parameter childActivity : activityList)
+    {
+%>
+            <option value="<%=childActivity.getId()%>" <%=childActivity.getId() == member.getActivity().getId() ? "selected" : ""%>><%=childActivity.getDescription()%></option>
+<%
+    }
+%>
+        </select>
+<%
+}
+%>
+
+<%
+Parameter status = (Parameter) Database.getCurrentSession()
+    .createQuery("FROM Parameter WHERE value = :value")
+    .setParameter("value", Parameter.STATUS)
+    .uniqueResult();
+
+if (status != null)
+{
+%>
+        <label for="member-update-status"><%=status.getDescription()%></label>
+        <select name="status" id="member-update-status">
+<%
+    List<Parameter> statusList = Database.getCurrentSession()
+            .createQuery("FROM Parameter WHERE parent = :parent ORDER BY position ASC")
+            .setParameter("parent", status)
+            .list();
+
+    for(Parameter childStatus : statusList)
+    {
+%>
+            <option value="<%=childStatus.getId()%>" <%=childStatus.getId() == member.getStatus().getId() ? "selected" : ""%>><%=childStatus.getDescription()%></option>
+<%
+    }
+%>
+        </select>
+<%
+}
+%>
     </div>
 
     <div id="note">
         <h3></h3>
 
-        <label for="member-create-note">Nota:</label>
-        <textarea cols="40" rows="8" name="member-create-note" id="member-create-note"></textarea>
+        <label for="member-update-note">Nota</label>
+        <textarea cols="40" rows="8" name="note" id="member-update-note"><%=member.getNote() == null ? "" : member.getNote()%></textarea>
     </div>
 
-    <br>
-
-    <div class="member-create-button ui-grid-a">
+    <div class="member-update-button ui-grid-a">
         <div class="ui-block-a">
-            <button class="ui-btn ui-corner-all" id="member-update" onclick="javascript:goTo('MemberView.jsp'); return;">Guardar</button>
+            <button class="ui-btn ui-corner-all" id="member-update" onclick="javascript:memberUpdate(); return;">Guardar</button>
         </div>
         <div class="ui-block-b">
             <button class="ui-btn ui-corner-all" id="member-cancel" onclick="javascript:goTo('MemberSearch.jsp'); return;">Cancelar</button>
         </div>
     </div>
-</div>
+</form>

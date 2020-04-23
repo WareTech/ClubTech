@@ -45,14 +45,12 @@ function goTo(url)
 
 function login()
 {
-	var username = $("#username").val();
-	var password = $("#password").val();
-
 	loadingShow();
 	$.post(
 		"services/Login.jsp",
-		{username:username, password:password},
-		function(data, status) {
+		$("#login").serialize(),
+		function(data, status)
+		{
 			if (data == 1) {
 				home();
 				loadingHide();
@@ -61,7 +59,8 @@ function login()
 
 			loadingHide();
 			$("#error").popup("open");
-		});
+		}
+	);
 }
 
 function logout()
@@ -156,4 +155,24 @@ function memberSearchFilter()
 		return;
 	}
 	goTo("MemberSearch.jsp?" + filter);
+}
+
+function memberUpdate()
+{
+	$.post(
+		"services/MemberUpdate.jsp",
+		$("#member-edit").serialize(),
+		function(data, status)
+		{
+			if (data == 1)
+			{
+				loadingHide();
+				$("#success").popup("open");
+				return;
+			}
+
+			loadingHide();
+			$("#error").popup("open");
+		}
+	);
 }

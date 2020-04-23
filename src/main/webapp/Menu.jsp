@@ -94,7 +94,7 @@
 	<%if (Utils.checkAuthorization(request, response, "Home.jsp")) {%>
 		<li><a href="javascript:home();" data-rel="close" class="ui-btn ui-icon-home ui-btn-icon-right">Inicio</a></li>
 	<%}%>
-	<%if (Utils.checkAuthorization(request, response, "UserProfile.jsp")) {%>
+	<%if (Utils.checkAuthorization(request, response, "UserProfile.jsp") && Utils.getUser(request, response) != null) {%>
 		<li><a href="javascript:goTo('UserProfile.jsp');" data-rel="close" class="ui-btn ui-icon-user ui-btn-icon-right">Perfil</a></li>
 	<%}%>
 	<%if (Utils.checkAuthorization(request, response, "Settings.jsp")) {%>

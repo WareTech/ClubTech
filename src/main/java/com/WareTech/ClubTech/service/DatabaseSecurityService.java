@@ -48,7 +48,8 @@ public class DatabaseSecurityService
     @Override
     public User login(String username, String password)
     {
-        try {
+        try
+        {
             User user = (User) Database.getCurrentSession()
                     .createQuery("FROM User WHERE username = :username AND password = :password")
                     .setParameter("username", username)
