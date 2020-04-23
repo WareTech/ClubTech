@@ -31,7 +31,7 @@ if (!"".equals(filter))
     for(User user : userList)
     {
 %>
-            <li><a href="javascript:goTo('UserEdit.jsp?<%=user.getId()%>');"><%=user.getUsername()%></a></li>
+            <li><a href="javascript:goTo('UserView.jsp?<%=user.getId()%>');"><%=user.getUsername()%></a></li>
 <%
     }
 }

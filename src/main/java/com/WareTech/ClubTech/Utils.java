@@ -59,8 +59,6 @@ public class Utils
 	{
 		HttpSession httpSession = httpServletRequest.getSession();
 		httpSession.setAttribute(USER, user);
-
-		Utils.setUserCached(httpServletRequest, httpServletResponse, user.getId().toString());
 	}
 
 	/**

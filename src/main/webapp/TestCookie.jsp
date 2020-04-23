@@ -1,15 +1,3 @@
-<%@ page import="com.WareTech.ClubTech.Utils" %>
-<%@ page import="com.WareTech.ClubTech.entity.User" %>
-
-<%
-String user = request.getParameter("user");
-
-if (user != null)
-{
-    Cookie cookie = new Cookie(Utils.USER, user);
-    response.addCookie(cookie);
-}
-%>
 <div>
     <ul data-role="listview" data-inset="true" data-divider-theme="a">
 <%for (Cookie cookie : request.getCookies()) {%>

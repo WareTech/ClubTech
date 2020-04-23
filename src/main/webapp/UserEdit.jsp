@@ -83,7 +83,14 @@ for(Access access : accessList)
 }
 %>
         </fieldset>
-        <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:userAccessSave(); return;">Guardar</button>
+        <div class="member-create-button ui-grid-a">
+            <div class="ui-block-a">
+                <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:userAccessSave(); return;">Guardar</button>
+            </div>
+            <div class="ui-block-b">
+                <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
+            </div>
+        </div>
     </div>
 </form>
 

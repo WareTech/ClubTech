@@ -137,7 +137,8 @@ INSERT INTO Access (id, version,value, description, position) VALUES
     (17, 1, 'MembersLoad.jsp', 'MembersList', null),
     (18, 1, 'ProcessList.jsp', 'ProcessList', null),
     (19, 1, 'MemberEdit.jsp', 'MemberEdit', null),
-    (20, 1, 'UserProfile.jsp', 'UserProfile', null);
+    (20, 1, 'UserProfile.jsp', 'UserProfile', null),
+    (21, 1, 'UserView.jsp', 'UserView', null);
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 1, 1, 1),
@@ -159,4 +160,5 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (17, 1, 1, 17),
     (18, 1, 1, 18),
     (19, 1, 1, 19),
-    (20, 1, 1, 20);
+    (20, 1, 1, 20),
+    (21, 1, 1, 21);
