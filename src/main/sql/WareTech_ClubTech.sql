@@ -31,8 +31,10 @@ CREATE TABLE IF NOT EXISTS User (
     version bigint(20) NOT NULL default '0',
     username varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
+    token varchar(255) NULL,
     PRIMARY KEY  (id),
-    UNIQUE KEY UK_User_username (username)
+    UNIQUE KEY UK_User_username (username),
+    UNIQUE KEY UK_User_token (token)
     );
 
 CREATE TABLE IF NOT EXISTS UserAccess (

@@ -7,9 +7,12 @@ public class Test
     static public void main(String[] args)
         throws Exception
     {
-        String password = "Globant202004!";
-        password = Base64.getEncoder().encodeToString(password.getBytes());
-        System.out.println(password);
+        String token = new StringBuffer().append(987).append(":").append(System.currentTimeMillis()).toString();
+        token = Base64.getEncoder().encodeToString(token.getBytes());
+        System.out.println(token);
+
+        token = new String(Base64.getDecoder().decode(token));
+        System.out.println(token);
 
         String birthday = "19770612";
         System.out.println(

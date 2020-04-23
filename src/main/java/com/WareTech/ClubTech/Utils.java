@@ -78,13 +78,22 @@ public class Utils
 		{
 			if (USER.equals(cookie.getName()))
 			{
-				String userId = cookie.getValue();
-				if (USER_EMPTY.equals(userId))
+				String token = cookie.getValue();
+				if (USER_EMPTY.equals(token))
 				{
 					return null;
 				}
 
-				User user = (User) Database.getCurrentSession().get(User.class, Long.parseLong(userId));
+				User user = (User) Database.getCurrentSession()
+						.createQuery("FROM User WHERE token = :token")
+						.setParameter("token", token)
+						.uniqueResult();
+
+				if (user == null)
+				{
+					return null;
+				}
+
 				Utils.setUser(httpServletRequest, httpServletResponse, user);
 
 				return user;

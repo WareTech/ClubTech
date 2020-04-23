@@ -14,6 +14,6 @@ if (user == null)
 }
 
 Utils.setUser(request, response, user);
-Utils.setUserCached(request, response, user.getId().toString());
+Utils.setUserCached(request, response, user.getToken());
 out.print(1);
 %>

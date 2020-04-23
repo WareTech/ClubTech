@@ -10,7 +10,8 @@ public class User
     extends AbstractPersistentObject
 {
     protected String username;
-    protected String password;
+	protected String password;
+	protected String token;
 
 	/**
 	 * @return the username
@@ -48,4 +49,21 @@ public class User
 		this.password = password;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
+	public String getToken()
+	{
+		return token;
+	}
+
+	/**
+	 * s
+	 * @param token
+	 */
+	public void setToken(String token)
+	{
+		this.token = token;
+	}
 }

@@ -7,6 +7,9 @@ import com.WareTech.ClubTech.entity.UserAccess;
 
 import java.util.Base64;
 
+/**
+ *
+ */
 public class SecurityService
 {
 	/**
@@ -67,6 +70,20 @@ public class SecurityService
 					.setParameter("username", username)
 					.setParameter("password", password)
 					.uniqueResult();
+
+			if (user == null)
+			{
+				return null;
+			}
+
+			String token = new StringBuffer()
+					.append(user.getId())
+					.append(":")
+					.append(System.currentTimeMillis())
+					.toString();
+			token = Base64.getEncoder().encodeToString(token.getBytes());
+			user.setToken(token);
+			Database.getCurrentSession().update(user);
 
 			return user;
 		}
