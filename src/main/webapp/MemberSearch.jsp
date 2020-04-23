@@ -10,6 +10,7 @@ if (filter == null)
 }
 filter = filter.trim().toLowerCase();
 %>
+
 <div>
 	<div data-role="popup" id="error">
 		<p>Busq&uacute;eda no v&aacute;lida</p>

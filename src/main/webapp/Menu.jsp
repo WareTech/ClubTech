@@ -81,24 +81,30 @@
 		<%if (Utils.checkAuthorization(request, response, "Unauthorized.jsp")) {%>
 		<li><a href="javascript:goTo('Unauthorized.jsp');" data-rel="close">Acceso NO autorizado</a></li>
 		<%}%>
-	<%if (Utils.checkAuthorization(request, response, "Error.jsp")) {%>
+		<%if (Utils.checkAuthorization(request, response, "Error.jsp")) {%>
 		<li><a href="javascript:goTo('Error.jsp');" data-rel="close">Error</a></li>
-	<%}%>
+		<%}%>
+		<%if (Utils.checkAuthorization(request, response, "TestCookie.jsp")) {%>
+		<li><a href="javascript:goTo('TestCookie.jsp');" data-rel="close">Test Cookie</a></li>
+		<%}%>
 <%}%>
 
-<%if (Utils.checkAuthorization(request, response, new String[]{"Profile.jsp", "Settings.jsp", "Logout.jsp"})) {%>
+<%if (Utils.checkAuthorization(request, response, new String[]{"UserProfile.jsp", "Settings.jsp", "Logout.jsp"})) {%>
 		<li data-role="list-divider">General</li>
 	<%if (Utils.checkAuthorization(request, response, "Home.jsp")) {%>
 		<li><a href="javascript:home();" data-rel="close" class="ui-btn ui-icon-home ui-btn-icon-right">Inicio</a></li>
 	<%}%>
-	<%if (Utils.checkAuthorization(request, response, "Profile.jsp")) {%>
-		<li><a href="javascript:goTo('Profile.jsp');" data-rel="close" class="ui-btn ui-icon-info ui-btn-icon-right">Perfil</a></li>
+	<%if (Utils.checkAuthorization(request, response, "UserProfile.jsp")) {%>
+		<li><a href="javascript:goTo('UserProfile.jsp');" data-rel="close" class="ui-btn ui-icon-user ui-btn-icon-right">Perfil</a></li>
 	<%}%>
 	<%if (Utils.checkAuthorization(request, response, "Settings.jsp")) {%>
 		<li><a href="javascript:goTo('Settings.jsp');" data-rel="close" class="ui-btn ui-icon-gear ui-btn-icon-right">Ajustes</a></li>
 	<%}%>
-	<%if (Utils.checkAuthorization(request, response, "Logout.jsp")) {%>
-		<li><a href="javascript:logout();" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-right">Salir</a></li>
+	<%if (Utils.checkAuthorization(request, response, "Logout.jsp") && Utils.getUser(request, response) != null) {%>
+		<li><a href="javascript:logout();" data-rel="close" class="ui-btn ui-icon-power ui-btn-icon-right">Salir</a></li>
+	<%}%>
+	<%if (Utils.checkAuthorization(request, response, "Login.jsp") && Utils.getUser(request, response) == null) {%>
+		<li><a href="javascript:goTo('Login.jsp');" data-rel="close" class="ui-btn ui-icon-lock ui-btn-icon-right">Ingresar</a></li>
 	<%}%>
 <%}%>
 	</ul>

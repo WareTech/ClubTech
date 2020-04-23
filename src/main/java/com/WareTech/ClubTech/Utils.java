@@ -1,5 +1,6 @@
 package com.WareTech.ClubTech;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,8 @@ public class Utils
 	final static public String URL_UNAUTHORIZED = URL_BASE + "Unauthorized.jsp";
 
 	final static public String USER = "USER";
+	final static public String USER_EMPTY = "";
+	final static public Integer USER_COOKIE_DURATION = 60 * 60 * 24 * 30;
 
 	/**
 	 *
@@ -32,8 +35,14 @@ public class Utils
 		)
 	{
 		HttpSession httpSession = httpServletRequest.getSession();
+		User user = (User) httpSession.getAttribute(USER);
 
-		return (User) httpSession.getAttribute(USER);
+		if (user != null)
+		{
+			return user;
+		}
+
+		return Utils.getUserCached(httpServletRequest, httpServletResponse);
 	}
 
 	/**
@@ -50,6 +59,57 @@ public class Utils
 	{
 		HttpSession httpSession = httpServletRequest.getSession();
 		httpSession.setAttribute(USER, user);
+
+		Utils.setUserCached(httpServletRequest, httpServletResponse, user.getId().toString());
+	}
+
+	/**
+	 *
+	 * @param httpServletRequest
+	 * @param httpServletResponse
+	 * @return
+	 */
+	static public User getUserCached(
+		HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse
+		)
+	{
+		for (Cookie cookie : httpServletRequest.getCookies())
+		{
+			if (USER.equals(cookie.getName()))
+			{
+				String userId = cookie.getValue();
+				if (USER_EMPTY.equals(userId))
+				{
+					return null;
+				}
+
+				User user = (User) Database.getCurrentSession().get(User.class, Long.parseLong(userId));
+				Utils.setUser(httpServletRequest, httpServletResponse, user);
+
+				return user;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 *
+	 * @param httpServletRequest
+	 * @param httpServletResponse
+	 * @param user
+	 */
+	static public void setUserCached(
+		HttpServletRequest httpServletRequest,
+		HttpServletResponse httpServletResponse,
+		String user
+		)
+	{
+		Cookie cookie = new Cookie(USER, user);
+		cookie.setPath(httpServletRequest.getContextPath());
+		cookie.setMaxAge(USER_COOKIE_DURATION);
+		httpServletResponse.addCookie(cookie);
 	}
 
 	/**

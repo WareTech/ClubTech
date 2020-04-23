@@ -113,7 +113,7 @@ INSERT INTO User (id, version,username, password) VALUES
     (1, 1, 'admin', 'admin'),
     (2, 1, 'Augusto', 'Soncini'),
     (3, 1, 'Valentino', 'Soncini'),
-    (4, 1, 'Catalina', 'Olchansky');
+    (4, 1, 'Catalina', 'Soncini');
 
 INSERT INTO Access (id, version,value, description, position) VALUES
     (1, 1, 'DEVELOPER_ACCESS', 'DEVELOPER_ACCESS', 1),
@@ -133,7 +133,9 @@ INSERT INTO Access (id, version,value, description, position) VALUES
     (15, 1, 'UserList.jsp', 'UserList', null),
     (16, 1, 'AccessList.jsp', 'AccessList', null),
     (17, 1, 'MembersLoad.jsp', 'MembersList', null),
-    (18, 1, 'ProcessList.jsp', 'ProcessList', null);
+    (18, 1, 'ProcessList.jsp', 'ProcessList', null),
+    (19, 1, 'MemberEdit.jsp', 'MemberEdit', null),
+    (20, 1, 'UserProfile.jsp', 'UserProfile', null);
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 1, 1, 1),
@@ -153,4 +155,6 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (15, 1, 1, 15),
     (16, 1, 1, 16),
     (17, 1, 1, 17),
-    (18, 1, 1, 18);
+    (18, 1, 1, 18),
+    (19, 1, 1, 19),
+    (20, 1, 1, 20);

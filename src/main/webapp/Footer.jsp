@@ -9,10 +9,12 @@ if (user == null)
 %>
 	<a href="javascript:goTo('Login.jsp');">Ingresar</a>
 <%
-} 
-else 
+}
+else
 {
-	out.print(user.getUsername());
+%>
+	<a href="javascript:goTo('UserProfile.jsp?<%=user.getId()%>');"><%=user.getUsername()%></a>
+<%
 }
 %>
 	</h1>

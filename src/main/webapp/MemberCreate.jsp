@@ -24,7 +24,7 @@
 		<input type="text" name="member-create-birthday" id="member-create-birthday" value="">
 
 		<label for="member-create-dni">DNI:</label>
-		<input type="text" name="member-create-dni" id="member-create-dni" value="">
+		<input type="number" name="member-create-dni" id="member-create-dni" pattern="[0-9]*" value="">
 	</div>
 
 	<div id="contact">

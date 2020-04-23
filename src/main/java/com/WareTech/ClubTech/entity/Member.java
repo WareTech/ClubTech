@@ -135,4 +135,66 @@ public class Member
     public void setNote(String note) {
         this.note = note;
     }
+
+    /**
+     *
+     * @return
+     */
+    public String getFriendlyBirthday()
+    {
+        if (this.getBirthday() == null)
+        {
+            return "";
+        }
+
+        return new StringBuffer()
+                .append(this.getBirthdayDay())
+                .append("/")
+                .append(this.getBirthdayMonth())
+                .append("/")
+                .append(this.getBirthdayYear())
+                .toString();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getBirthdayYear()
+    {
+        if (this.getBirthday() == null)
+        {
+            return "";
+        }
+
+        return this.getBirthday().substring(0, 4);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getBirthdayMonth()
+    {
+        if (this.getBirthday() == null)
+        {
+            return "";
+        }
+
+        return this.getBirthday().substring(4, 6);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getBirthdayDay()
+    {
+        if (this.getBirthday() == null)
+        {
+            return "";
+        }
+
+        return this.getBirthday().substring(6, 8);
+    }
 }

@@ -7,11 +7,13 @@ String username = request.getParameter("username");
 String password = request.getParameter("password");
 User user = Context.getSecurityService().login(username, password);
 
-if (user == null) {
+if (user == null)
+{
 	out.print(-1);
 	return;
 }
 
 Utils.setUser(request, response, user);
+Utils.setUserCached(request, response, user.getId().toString());
 out.print(1);
 %>

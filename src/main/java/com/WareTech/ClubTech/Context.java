@@ -17,6 +17,7 @@ public class Context
     final static public String DATE_FORMAT = "dd/MM/yyyy";
     final static public DateFormat DATE_FORMATER = new SimpleDateFormat(DATE_FORMAT);
 
+    final static public String[] MONTH = new String[]{"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     private Context(){}
 
     static protected String APPLICATION_NAME = "ClubTech";
