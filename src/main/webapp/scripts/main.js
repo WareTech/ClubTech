@@ -288,3 +288,26 @@ function activityUpdate()
 		}
 	);
 }
+
+function activityCreate()
+{
+	loadingShow();
+
+	$.post(
+		"services/ActivityCreate.jsp",
+		$("#activity-create").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("ActivityView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		}
+	);
+}

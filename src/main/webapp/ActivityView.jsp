@@ -21,7 +21,9 @@ if (activity == null)
 %>
 
 <ul data-role="listview" data-inset="true" data-divider-theme="a">
-    <li data-role="list-divider">Actividad</li>
+    <li data-role="list-divider">Clave</li>
+    <li><%=activity.getValue()%></li>
+    <li data-role="list-divider">Descripcion</li>
     <li><%=activity.getDescription()%></li>
 </ul>
 

@@ -25,7 +25,7 @@ if (parameter == null)
 </div>
 
 <div data-role="popup" id="success">
-    <p>Actividad actualizado</p>
+    <p>Actividad actualizada</p>
 </div>
 
 <form data-role="tabs" id="activity-edit" onsubmit="return false;">

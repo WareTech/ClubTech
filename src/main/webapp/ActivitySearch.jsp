@@ -21,3 +21,5 @@ for (Parameter childActivity : activityList)
 }
 %>
 </ul>
+
+<button class="ui-btn ui-corner-all" onclick="javascript:goTo('ActivityCreate.jsp'); return;">Nueva Actividad</button>
