@@ -130,7 +130,7 @@ INSERT INTO Access (id, version,value, description) VALUES
     (11, 1, 'BuffetTicketResume.jsp', 'BuffetTicketResume'),
     (12, 1, 'StoreTicketCreate.jsp', 'StoreTicketCreate'),
     (13, 1, 'StoreTicketResume.jsp', 'StoreTicketResume'),
-    (14, 1, 'Activities.jsp', 'Activities'),
+    (14, 1, 'ActivitySearch.jsp', 'Activities'),
     (15, 1, 'UserSearch.jsp', 'UserSearch'),
     (16, 1, 'AccessSearch.jsp', 'AccessSearch'),
     (17, 1, 'MembersLoad.jsp', 'MembersLoad'),
@@ -138,7 +138,8 @@ INSERT INTO Access (id, version,value, description) VALUES
     (19, 1, 'MemberEdit.jsp', 'MemberEdit'),
     (20, 1, 'UserProfile.jsp', 'UserProfile'),
     (21, 1, 'UserView.jsp', 'UserView'),
-    (22, 1, 'AccessView.jsp', 'AccessView');
+    (22, 1, 'AccessView.jsp', 'AccessView'),
+    (23, 1, 'ActivityView.jsp', 'ActivityView');
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 1, 1, 1),
@@ -162,4 +163,5 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (19, 1, 1, 19),
     (20, 1, 1, 20),
     (21, 1, 1, 21),
-    (22, 1, 1, 22);
+    (22, 1, 1, 22),
+    (23, 1, 1, 23);

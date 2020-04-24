@@ -1,19 +1,19 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.WareTech.ClubTech.entity.User" %>
 <%@ page import="com.WareTech.ClubTech.entity.Access" %>
 <%@ page import="com.WareTech.ClubTech.Database" %>
+<%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
 
 <%
-String userId = request.getQueryString();
-if (userId == null)
+String activityId = request.getQueryString();
+if (activityId == null)
 {
 %>
 <%@include file="Error.jsp"%>
 <%
     return;
 }
-User user = (User) Database.getCurrentSession().get(User.class, Long.parseLong(userId));
-if (user == null)
+Parameter activity = (Parameter) Database.getCurrentSession().get(Parameter.class, Long.parseLong(activityId));
+if (activity == null)
 {
 %>
 <%@include file="Error.jsp"%>

@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.User" %>
-<%@ page import="com.WareTech.ClubTech.facade.UserFacade" %>
+<%@ page import="com.WareTech.ClubTech.Database" %>
 
 <%
 String filter = request.getQueryString();
@@ -10,6 +10,9 @@ if (filter == null)
 }
 filter = filter.trim().toLowerCase();
 %>
+<div data-role="popup" id="error">
+    <p>Busq&uacute;eda no v&aacute;lida</p>
+</div>
 
 <div>
     <div id="user-list-panel">
@@ -23,7 +26,10 @@ filter = filter.trim().toLowerCase();
 <%
 if (!"".equals(filter))
 {
-    List<User> userList = UserFacade.filter(filter);
+    List<User> userList = Database.getCurrentSession()
+        .createQuery("FROM User WHERE username LIKE :username ORDER BY username ASC")
+        .setParameter("username", "%" + filter + "%")
+        .list();
     for(User user : userList)
     {
 %>

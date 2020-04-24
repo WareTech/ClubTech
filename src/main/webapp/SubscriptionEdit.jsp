@@ -1,14 +1,15 @@
-<%@ page import="com.WareTech.ClubTech.facade.ActivityFacade" %>
-<%@ page import="com.WareTech.ClubTech.facade.PeriodFacade" %>
+<%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
+<%@ page import="com.WareTech.ClubTech.Database" %>
+<%@ page import="java.util.List" %>
 <div>
     <form action="#" method="get">
         <h2>Cuotas</h2>
 
         <div id="subscription-period-panel">
-            <label for="subscription-period">Periodo:</label>
+            <label for="subscription-period">Periodo:/label>
             <select name="subscription-period" id="subscription-period" onchange="javascript:subscriptionPeriodChanged();">
 <%
-for (String period : PeriodFacade.getPeriodList())
+for (String period : new String[]{"2020 Anual", "2020 Enero", "2020 Febrero", "2020 Marzo"})
 {
 %>
                 <option value="<%=period%>"><%=period%></option>
@@ -20,11 +21,19 @@ for (String period : PeriodFacade.getPeriodList())
 
         <div id="subscription-edit-period-amount-panel">
 <%
-for (String activity : ActivityFacade.getActivityList())
+Parameter activity = (Parameter) Database.getCurrentSession()
+        .createQuery("FROM Parameter activity WHERE value = :activity")
+        .setParameter("activity", Parameter.ACTIVITY)
+        .uniqueResult();
+List<Parameter> activityList = Database.getCurrentSession()
+        .createQuery("FROM Parameter WHERE parent = :activity ORDER BY position ASC")
+        .setParameter("activity", activity)
+        .list();
+for (Parameter childActivity : activityList)
 {
 %>
-            <label for="subscription-edit-period-<%=activity%>-amount"><%=activity%>:</label>
-            <input type="text" name="subscription-edit-period-<%=activity%>-amount" id="subscription-edit-period-<%=activity%>-amount" value="">
+            <label><%=childActivity.getDescription()%></label>
+            <input type="text" name="activity-<%=childActivity.getId()%>" id="activity-<%=childActivity.getId()%>" value="">
 <%
 }
 %>

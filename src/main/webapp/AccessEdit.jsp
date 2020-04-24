@@ -1,6 +1,5 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.User" %>
-<%@ page import="com.WareTech.ClubTech.facade.UserFacade" %>
 <%@ page import="com.WareTech.ClubTech.entity.Access" %>
 <%@ page import="com.WareTech.ClubTech.Database" %>
 
