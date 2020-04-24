@@ -76,7 +76,7 @@ for(User user : userList)
 
     <div class="ui-grid-a">
         <div class="ui-block-a">
-            <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:accessEditUpdate(); return;">Guardar</button>
+            <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:accessUpdate(); return;">Guardar</button>
         </div>
         <div class="ui-block-b">
             <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('AccessSearch.jsp'); return;">Cancelar</button>

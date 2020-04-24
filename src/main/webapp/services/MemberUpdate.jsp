@@ -102,5 +102,5 @@ if (note != null && !note.equals(""))
 
 Database.getCurrentSession().update(member);
 
-out.print(1);
+out.print(member.getId());
 %>

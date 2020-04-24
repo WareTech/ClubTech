@@ -19,7 +19,7 @@ filter = filter.trim().toLowerCase();
 	<div id="member-search-filter-panel">
 		<label for="member-search-filter">Buscar socio</label>
 		<input type="text" name="member-search-filter" id="member-search-filter" value="<%=filter%>">
-		<button class="ui-btn ui-corner-all" onclick="javascript:memberSearchFilter();return;">Buscar</button>
+		<button class="ui-btn ui-corner-all" onclick="javascript:memberSearch();return;">Buscar</button>
 	</div>
 
 	<div id="member-search-filter-list-panel">

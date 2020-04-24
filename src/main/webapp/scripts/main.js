@@ -94,59 +94,79 @@ function userSearch()
 	goTo("UserSearch.jsp?" + filter);
 }
 
-function userEditSave()
+function userUpdate()
+{
+	loadingShow();
+
+	$.post(
+		"services/UserUpdate.jsp",
+		$("#info").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("UserView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		});
+}
+
+function validatePassword(password)
+{
+	if (password == null)
+	{
+		return -2;
+	}
+
+	if (password == "")
+	{
+		return -3;
+	}
+
+	if (password.length < 8)
+	{
+		return -4;
+	}
+
+	return 1;
+}
+
+function userPasswordUpdate()
 {
 	var password1 = $("#user-edit-password1").val();
 	var password2 = $("#user-edit-password2").val();
+
 	if (password1 != password2)
 	{
-		$("#error-wrong-password").popup("open");
+		$("#error-wrong-password-1").popup("open");
+		return;
+	}
+
+	var error = validatePassword(password1);
+	if (error < 0)
+	{
+		$("#error-wrong-password" + error).popup("open");
 		return;
 	}
 
 	loadingShow();
 
 	$.post(
-		"services/UserUpdate.jsp",
-		$("#user-edit").serialize(),
+		"services/UserPasswordUpdate.jsp",
+		$("#password").serialize(),
 		function(data, status)
 		{
 			loadingHide();
 
-			if (data == 1)
+			if (data > 0)
 			{
 				$("#success").popup("open");
-				return;
-			}
-
-			$("#error").popup("open");
-		}
-	);
-}
-
-function userAccessSave()
-{
-	loadingShow();
-
-	var userId = $("#user-edit-id").val();
-	var accessList = [];
-
-	$('#access input:checked').each(
-		function() {
-			accessList.push(this.value)
-		});
-
-	$.post(
-		"services/UserAccessUpdate.jsp",
-		{userId:userId, accessList:accessList},
-		function(data, status)
-		{
-			loadingHide();
-
-			if (data == 1)
-			{
-				$("#success").popup("open");
-				goTo("UserView.jsp?" + userId);
+				goTo("UserView.jsp?" + data);
 				return;
 			}
 
@@ -154,7 +174,7 @@ function userAccessSave()
 		});
 }
 
-function memberSearchFilter()
+function memberSearch()
 {
 	var filter = $("#member-search-filter").val()
 	if (filter == "")
@@ -169,8 +189,6 @@ function memberUpdate()
 {
 	loadingShow();
 
-	var memberId = $("#member-id").val();
-
 	$.post(
 		"services/MemberUpdate.jsp",
 		$("#member-edit").serialize(),
@@ -178,9 +196,10 @@ function memberUpdate()
 		{
 			loadingHide();
 
-			if (data == 1)
+			if (data > 0)
 			{
-				goTo("MemberView.jsp?" + memberId);
+				$("#success").popup("open");
+				goTo("MemberView.jsp?" + data);
 				return;
 			}
 
@@ -224,14 +243,14 @@ function accessSearch()
 	goTo("AccessSearch.jsp?" + filter);
 }
 
-function accessEditUpdate()
+function accessUpdate()
 {
 	loadingShow();
 
 	var accessId = $("#accessId").val();
 
 	$.post(
-		"services/AccessEditUpdate.jsp",
+		"services/AccessUpdate.jsp",
 		$("#access-edit").serialize(),
 		function(data, status)
 		{
