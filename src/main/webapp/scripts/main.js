@@ -247,8 +247,6 @@ function accessUpdate()
 {
 	loadingShow();
 
-	var accessId = $("#accessId").val();
-
 	$.post(
 		"services/AccessUpdate.jsp",
 		$("#access-edit").serialize(),
@@ -256,10 +254,33 @@ function accessUpdate()
 		{
 			loadingHide();
 
-			if (data == 1)
+			if (data > 0)
 			{
 				$("#success").popup("open");
-				goTo("AccessView.jsp?" + accessId);
+				goTo("AccessView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		}
+	);
+}
+
+function activityUpdate()
+{
+	loadingShow();
+
+	$.post(
+		"services/ActivityUpdate.jsp",
+		$("#activity-edit").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("ActivityView.jsp?" + data);
 				return;
 			}
 
