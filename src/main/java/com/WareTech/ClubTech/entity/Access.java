@@ -8,7 +8,6 @@ public class Access
 {
     protected String value;
     protected String description;
-    protected Integer position;
 
     /**
 	 * @return the value
@@ -44,21 +43,5 @@ public class Access
 			)
 	{
 		this.description = description;
-	}
-
-	/**
-	 *
-	 * @return
-	 */
-	public Integer getPosition() {
-		return position;
-	}
-
-	/**
-	 *
-	 * @param position
-	 */
-	public void setPosition(Integer position) {
-		this.position = position;
 	}
 }

@@ -11,15 +11,11 @@ if (filter == null)
 filter = filter.trim().toLowerCase();
 %>
 
-<div data-role="popup" id="error">
-    <p>No se pudo actualizar el usuario</p>
-</div>
-
 <div>
     <div id="user-list-panel">
-        <label for="user-list">Usuario:</label>
+        <label for="user-list">Buscar usuario</label>
         <input type="text" name="user-list" id="user-list" value="<%=filter%>">
-        <button class="ui-btn ui-corner-all" id="user-list-search" onclick="javascript:userListSearch(); return;">Buscar</button>
+        <button class="ui-btn ui-corner-all" id="user-list-search" onclick="javascript:userSearch(); return;">Buscar</button>
     </div>
 
     <div id="user-list-list-panel">

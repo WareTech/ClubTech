@@ -63,19 +63,19 @@
 	<div id="contact">
 		<h3></h3>
 
-		<label for="member-create-phone">Tel&eacute;fono:</label>
+		<label for="member-create-phone">Tel&eacute;fono</label>
 		<input type="number" name="phone" id="member-create-phone" value="">
 
-		<label for="member-create-address">Direcci&oacute;n:</label>
+		<label for="member-create-address">Direcci&oacute;n</label>
 		<input type="text" name="address" id="member-create-address" value="">
 
-		<label for="member-create-email">eMail:</label>
+		<label for="member-create-email">eMail</label>
 		<input type="text" name="email" id="member-create-email" value="">
 
-		<label for="member-create-father-info">Nombre y Apellido del Padre:</label>
+		<label for="member-create-father-info">Datos del Padre</label>
 		<input type="text" name="father-info" id="member-create-father-info" value="">
 
-		<label for="member-create-mother-info">Nombre y Apellido de la Madre:</label>
+		<label for="member-create-mother-info">Datos de la Madre</label>
 		<input type="text" name="mother-info" id="member-create-mother-info" value="">
 	</div>
 

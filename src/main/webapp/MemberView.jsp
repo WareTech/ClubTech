@@ -88,6 +88,6 @@ if (member == null)
 		<button class="ui-btn ui-corner-all" id="member-update" onclick="javascript:goTo('MemberEdit.jsp?<%=memberId%>'); return;">Editar</button>
 	</div>
 	<div class="ui-block-b">
-		<button class="ui-btn ui-corner-all" id="member-cancel" onclick="javascript:goTo('MemberSearch.jsp'); return;">Cancelar</button>
+		<button class="ui-btn ui-corner-all" id="member-cancel" onclick="javascript:goTo('MemberSearch.jsp'); return;">Volver</button>
 	</div>
 </div>

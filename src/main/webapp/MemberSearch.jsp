@@ -11,13 +11,13 @@ if (filter == null)
 filter = filter.trim().toLowerCase();
 %>
 
-<div>
-	<div data-role="popup" id="error">
-		<p>Busq&uacute;eda no v&aacute;lida</p>
-	</div>
+<div data-role="popup" id="error">
+	<p>Busq&uacute;eda no v&aacute;lida</p>
+</div>
 
+<div>
 	<div id="member-search-filter-panel">
-		<label for="member-search-filter">Socio:</label>
+		<label for="member-search-filter">Buscar socio</label>
 		<input type="text" name="member-search-filter" id="member-search-filter" value="<%=filter%>">
 		<button class="ui-btn ui-corner-all" onclick="javascript:memberSearchFilter();return;">Buscar</button>
 	</div>

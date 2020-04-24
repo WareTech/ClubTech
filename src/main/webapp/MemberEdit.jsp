@@ -26,7 +26,7 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
 
 <form data-role="tabs" id="member-edit" onsubmit="return false;">
 
-    <input type="hidden" name="member-id" value="<%=member.getId()%>">
+    <input type="hidden" name="member-id" id="member-id" value="<%=member.getId()%>">
 
     <div data-role="navbar">
         <ul>

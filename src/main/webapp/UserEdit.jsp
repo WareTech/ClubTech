@@ -52,7 +52,7 @@ if (user == null)
 
         <label for="user-edit-username">Usuario</label>
         <input type="text" name="username" id="user-edit-username" value="<%=user.getUsername()%>">
-        <button class="ui-btn ui-corner-all" id="user-edit-serach" onclick="javascript:goTo('UserList.jsp'); return;">Buscar</button>
+        <button class="ui-btn ui-corner-all" id="user-edit-serach" onclick="javascript:goTo('UserSearch.jsp'); return;">Buscar</button>
         <label for="user-edit-password1">Clave</label>
         <input type="password" name="password1" id="user-edit-password1" value="">
         <label for="user-edit-password2">Repita la Clave</label>
@@ -62,15 +62,20 @@ if (user == null)
                 <button class="ui-btn ui-corner-all" id="user-edit-save" onclick="javascript:userEditSave(); return;">Guardar</button>
             </div>
             <div class="ui-block-b">
-                <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
+                <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserSearch.jsp'); return;">Cancelar</button>
             </div>
         </div>
     </div>
 
     <div id="access">
 <%
-List<Access> accessList = Database.getCurrentSession().createQuery("FROM Access ORDER BY value").list();
-List<Long> userAccessIdList = Database.getCurrentSession().createQuery("SELECT access.id FROM UserAccess WHERE user = :user").setParameter("user", user).list();
+List<Access> accessList = Database.getCurrentSession()
+        .createQuery("FROM Access ORDER BY description ASC")
+        .list();
+List<Long> userAccessIdList = Database.getCurrentSession()
+        .createQuery("SELECT access.id FROM UserAccess WHERE user = :user")
+        .setParameter("user", user)
+        .list();
 %>
         <fieldset data-role="controlgroup">
 <%
@@ -83,12 +88,12 @@ for(Access access : accessList)
 }
 %>
         </fieldset>
-        <div class="member-create-button ui-grid-a">
+        <div class="ui-grid-a">
             <div class="ui-block-a">
-                <button class="ui-btn ui-corner-all" id="user-access-save" onclick="javascript:userAccessSave(); return;">Guardar</button>
+                <button class="ui-btn ui-corner-all" id="access-access-save" onclick="javascript:userAccessSave(); return;">Guardar</button>
             </div>
             <div class="ui-block-b">
-                <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
+                <button class="ui-btn ui-corner-all" id="access-edit-cancel" onclick="javascript:goTo('UserSearch.jsp'); return;">Cancelar</button>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@ if (user == null)
     <li data-role="list-divider">Accesos</li>
 <%
 List<Access> accessList = Database.getCurrentSession()
-    .createQuery("SELECT access FROM UserAccess WHERE user = :user")
+    .createQuery("SELECT access FROM UserAccess WHERE user = :user ORDER BY description ASC")
     .setParameter("user", user)
     .list();
 for(Access access : accessList)
@@ -53,7 +53,7 @@ if (accessList.size() == 0)
         <button class="ui-btn ui-corner-all" id="user-view" onclick="javascript:goTo('UserEdit.jsp?<%=user.getId()%>'); return;">Editar</button>
     </div>
     <div class="ui-block-b">
-        <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserList.jsp'); return;">Cancelar</button>
+        <button class="ui-btn ui-corner-all" id="user-edit-cancel" onclick="javascript:goTo('UserSearch.jsp'); return;">Volver</button>
     </div>
 </div>
 

@@ -63,13 +63,13 @@
 	<%}%>
 <%}%>
 
-<%if (Utils.checkAuthorization(request, response, new String[]{"UserList.jsp", "AccessList.jsp"})) {%>
+<%if (Utils.checkAuthorization(request, response, new String[]{"UserSearch.jsp", "AccessSearch.jsp"})) {%>
 		<li data-role="list-divider">Sistema</li>
-	<%if (Utils.checkAuthorization(request, response, "UserList.jsp")) {%>
-		<li><a href="javascript:goTo('UserList.jsp');" data-rel="close">Usuarios</a></li>
+	<%if (Utils.checkAuthorization(request, response, "UserSearch.jsp")) {%>
+		<li><a href="javascript:goTo('UserSearch.jsp');" data-rel="close">Usuarios</a></li>
 	<%}%>
-	<%if (Utils.checkAuthorization(request, response, "AccessList.jsp")) {%>
-		<li><a href="javascript:goTo('AccessList.jsp');" data-rel="close">Accesos</a></li>
+	<%if (Utils.checkAuthorization(request, response, "AccessSearch.jsp")) {%>
+		<li><a href="javascript:goTo('AccessSearch.jsp');" data-rel="close">Accesos</a></li>
 	<%}%>
 <%}%>
 

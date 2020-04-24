@@ -16,16 +16,6 @@ CREATE TABLE IF NOT EXISTS Parameter (
     CONSTRAINT FK_Parameter_parent FOREIGN KEY (parent) REFERENCES Parameter (id)
     );
 
-CREATE TABLE IF NOT EXISTS Access (
-    id bigint(20) NOT NULL auto_increment,
-    version bigint(20) NOT NULL default '0',
-    value varchar(255) NOT NULL,
-    description varchar(255) NOT NULL,
-    position int NULL,
-    PRIMARY KEY  (id),
-    UNIQUE KEY UK_Access_value (value)
-    );
-
 CREATE TABLE IF NOT EXISTS User (
     id bigint(20) NOT NULL auto_increment,
     version bigint(20) NOT NULL default '0',
@@ -35,6 +25,15 @@ CREATE TABLE IF NOT EXISTS User (
     PRIMARY KEY  (id),
     UNIQUE KEY UK_User_username (username),
     UNIQUE KEY UK_User_token (token)
+    );
+
+CREATE TABLE IF NOT EXISTS Access (
+    id bigint(20) NOT NULL auto_increment,
+    version bigint(20) NOT NULL default '0',
+    value varchar(255) NOT NULL,
+    description varchar(255) NOT NULL,
+    PRIMARY KEY  (id),
+    UNIQUE KEY UK_Access_value (value)
     );
 
 CREATE TABLE IF NOT EXISTS UserAccess (
@@ -117,28 +116,29 @@ INSERT INTO User (id, version,username, password) VALUES
     (3, 1, 'Valentino', 'Soncini'),
     (4, 1, 'Catalina', 'Soncini');
 
-INSERT INTO Access (id, version,value, description, position) VALUES
-    (1, 1, 'DEVELOPER_ACCESS', 'DEVELOPER_ACCESS', 1),
-    (2, 1, 'SubscriptionCreateMember.jsp', 'SubscriptionCreateMember', null),
-    (3, 1, 'SubscriptionSearch.jsp', 'SubscriptionSearch', null),
-    (4, 1, 'SubscriptionEdit.jsp', 'SubscriptionEdit', null),
-    (5, 1, 'MemberCreate.jsp', 'MemberCreate', null),
-    (6, 1, 'MemberSearch.jsp', 'MemberSearch', null),
-    (7, 1, 'TicketCreate.jsp', 'TicketCreate', null),
-    (8, 1, 'TicketList.jsp', 'TicketList', null),
-    (9, 1, 'PersonSearchPage.jsp', 'PersonSearchPage', null),
-    (10, 1, 'BuffetTicketCreate.jsp', 'BuffetTicketCreate', null),
-    (11, 1, 'BuffetTicketResume.jsp', 'BuffetTicketResume', null),
-    (12, 1, 'StoreTicketCreate.jsp', 'StoreTicketCreate', null),
-    (13, 1, 'StoreTicketResume.jsp', 'StoreTicketResume', null),
-    (14, 1, 'Activities.jsp', 'Activities', null),
-    (15, 1, 'UserList.jsp', 'UserList', null),
-    (16, 1, 'AccessList.jsp', 'AccessList', null),
-    (17, 1, 'MembersLoad.jsp', 'MembersList', null),
-    (18, 1, 'ProcessList.jsp', 'ProcessList', null),
-    (19, 1, 'MemberEdit.jsp', 'MemberEdit', null),
-    (20, 1, 'UserProfile.jsp', 'UserProfile', null),
-    (21, 1, 'UserView.jsp', 'UserView', null);
+INSERT INTO Access (id, version,value, description) VALUES
+    (1, 1, 'DEVELOPER_ACCESS', 'DEVELOPER_ACCESS'),
+    (2, 1, 'SubscriptionCreateMember.jsp', 'SubscriptionCreateMember'),
+    (3, 1, 'SubscriptionSearch.jsp', 'SubscriptionSearch'),
+    (4, 1, 'SubscriptionEdit.jsp', 'SubscriptionEdit'),
+    (5, 1, 'MemberCreate.jsp', 'MemberCreate'),
+    (6, 1, 'MemberSearch.jsp', 'MemberSearch'),
+    (7, 1, 'TicketCreate.jsp', 'TicketCreate'),
+    (8, 1, 'TicketList.jsp', 'TicketList'),
+    (9, 1, 'PersonSearchPage.jsp', 'PersonSearchPage'),
+    (10, 1, 'BuffetTicketCreate.jsp', 'BuffetTicketCreate'),
+    (11, 1, 'BuffetTicketResume.jsp', 'BuffetTicketResume'),
+    (12, 1, 'StoreTicketCreate.jsp', 'StoreTicketCreate'),
+    (13, 1, 'StoreTicketResume.jsp', 'StoreTicketResume'),
+    (14, 1, 'Activities.jsp', 'Activities'),
+    (15, 1, 'UserSearch.jsp', 'UserSearch'),
+    (16, 1, 'AccessSearch.jsp', 'AccessSearch'),
+    (17, 1, 'MembersLoad.jsp', 'MembersLoad'),
+    (18, 1, 'ProcessList.jsp', 'ProcessList'),
+    (19, 1, 'MemberEdit.jsp', 'MemberEdit'),
+    (20, 1, 'UserProfile.jsp', 'UserProfile'),
+    (21, 1, 'UserView.jsp', 'UserView'),
+    (22, 1, 'AccessView.jsp', 'AccessView');
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 1, 1, 1),
@@ -161,4 +161,5 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (18, 1, 1, 18),
     (19, 1, 1, 19),
     (20, 1, 1, 20),
-    (21, 1, 1, 21);
+    (21, 1, 1, 21),
+    (22, 1, 1, 22);
