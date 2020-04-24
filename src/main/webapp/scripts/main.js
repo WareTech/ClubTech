@@ -170,7 +170,7 @@ function memberUpdate()
 			{
 				loadingHide();
 				$("#success").popup("open");
-				goTo("MemverView.jsp?" + memberId);
+				goTo("MemberView.jsp?" + memberId);
 				return;
 			}
 
