@@ -46,6 +46,8 @@ if (user == null)
     <p>Usuario actualizado</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Usuarios</h3>
+
 <div data-role="tabs">
 
     <div data-role="navbar">

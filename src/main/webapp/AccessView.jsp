@@ -22,6 +22,8 @@ if (access == null)
 }
 %>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Accesos</h3>
+
 <ul data-role="listview" data-inset="true" data-divider-theme="a">
     <li data-role="list-divider">Acceso</li>
     <li><%=access.getDescription()%></li>

@@ -30,6 +30,8 @@ if (access == null)
     <p>Acceso actualizado</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Accesos</h3>
+
 <form data-role="tabs" id="access-edit" onsubmit="return false;">
 
     <input type="hidden" name="accessId" id="accessId" value="<%=access.getId()%>">

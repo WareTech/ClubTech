@@ -15,6 +15,8 @@ filter = filter.trim().toLowerCase();
     <p>Busq&uacute;eda no v&aacute;lida</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Accesos</h3>
+
 <div>
     <div id="access-list-panel">
         <label for="access-list">Buscar acceso</label>

@@ -10,8 +10,6 @@
 
 <form data-role="tabs" id="activity-create" onsubmit="return false;">
 
-    <h3></h3>
-
     <label>Clave</label>
     <input type="text" name="value" value="">
     <label>Descripci&oacute;n</label>
