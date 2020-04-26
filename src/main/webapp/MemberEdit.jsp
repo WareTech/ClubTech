@@ -24,6 +24,8 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
     <p>Socio actualizado con &eacute;xito</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Socios</h3>
+
 <form data-role="tabs" id="member-edit" onsubmit="return false;">
 
     <input type="hidden" name="member-id" id="member-id" value="<%=member.getId()%>">
@@ -38,7 +40,7 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
     </div>
 
     <div id="personal">
-        <h3></h3>
+        <br>
 
         <label for="member-update-firstname">Nombre</label>
         <input type="text" name="firstname" id="member-update-firstname" value="<%=member.getFirstname()%>">
@@ -79,7 +81,7 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
     </div>
 
     <div id="contact">
-        <h3></h3>
+        <br>
 
         <label for="member-update-phone">Tel&eacute;fono:</label>
         <input type="number" name="phone" id="member-update-phone" value="<%=member.getPhone() == null ? "" : member.getPhone()%>">
@@ -215,7 +217,7 @@ if (status != null)
     </div>
 
     <div id="note">
-        <h3></h3>
+        <br>
 
         <label for="member-update-note">Nota</label>
         <textarea cols="40" rows="8" name="note" id="member-update-note"><%=member.getNote() == null ? "" : member.getNote()%></textarea>

@@ -11,6 +11,8 @@
 	<p>Socio actualizado con &eacute;xito</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Socios</h3>
+
 <form data-role="tabs" id="member-create" onsubmit="return false;">
 
 	<div data-role="navbar">
@@ -23,7 +25,7 @@
 	</div>
 
 	<div id="personal">
-		<h3></h3>
+		<br>
 
 		<label for="member-create-firstname">Nombre</label>
 		<input type="text" name="firstname" id="member-create-firstname" value="">
@@ -61,7 +63,7 @@
 	</div>
 
 	<div id="contact">
-		<h3></h3>
+		<br>
 
 		<label for="member-create-phone">Tel&eacute;fono</label>
 		<input type="number" name="phone" id="member-create-phone" value="">
@@ -175,8 +177,7 @@ for(Parameter childStatus : statusList)
 	</div>
 
 	<div id="note">
-		<h3></h3>
-
+		<br>
 		<label for="member-create-note">Nota</label>
 		<textarea cols="40" rows="8" name="note" id="member-create-note"></textarea>
 	</div>

@@ -23,6 +23,8 @@ if (member == null)
 }
 %>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Socios</h3>
+
 <div data-role="tabs">
 
 	<div data-role="navbar">
