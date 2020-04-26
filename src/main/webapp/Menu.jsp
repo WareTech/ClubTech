@@ -53,10 +53,10 @@
 	<%}%>
 <%}%>
 
-<%if (Utils.checkAuthorization(request, response, new String[]{"SubscriptionEdit.jsp", "ActivitySearch.jsp"})) {%>
+<%if (Utils.checkAuthorization(request, response, new String[]{"SubscriptionSearch.jsp", "ActivitySearch.jsp"})) {%>
 		<li data-role="list-divider">Administraci&oacute;n</li>
-	<%if (Utils.checkAuthorization(request, response, "SubscriptionEdit.jsp")) {%>
-		<li><a href="javascript:goTo('SubscriptionEdit.jsp');" data-rel="close">Cuota</a></li>
+	<%if (Utils.checkAuthorization(request, response, "SubscriptionSearch.jsp")) {%>
+		<li><a href="javascript:goTo('SubscriptionSearch.jsp');" data-rel="close">Cuota</a></li>
 	<%}%>
 	<%if (Utils.checkAuthorization(request, response, "ActivitySearch.jsp")) {%>
 		<li><a href="javascript:goTo('ActivitySearch.jsp');" data-rel="close">Actividades</a></li>

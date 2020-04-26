@@ -311,3 +311,46 @@ function activityCreate()
 		}
 	);
 }
+
+function subscriptionSearch()
+{
+	var filter = $("#subscription-filter").val()
+
+	if (filter == "")
+	{
+		$("#error").popup("open");
+		return;
+	}
+	goTo("SubscriptionSearch.jsp?" + filter);
+}
+
+function subscriptionUpdate()
+{
+	loadingShow();
+
+	$.post(
+		"services/SubscriptionUpdate.jsp",
+		$("#subscription-update").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("SubscriptionView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		}
+	);
+}
+
+function subscriptionPeriodChanged()
+{
+	loadingShow();
+	var period = $("#subscription-period").val();
+	goTo("SubscriptionEdit.jsp?" + period);
+	loadingHide();
+}

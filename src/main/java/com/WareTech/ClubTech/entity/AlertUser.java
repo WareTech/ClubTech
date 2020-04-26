@@ -12,10 +12,10 @@ public class AlertUser
 {
 	protected Time date;
 	@ManyToOne
-	@JoinColumn(name="alertId")
+	@JoinColumn(name="alert")
 	protected Alert alert;
 	@ManyToOne
-	@JoinColumn(name="userId")
+	@JoinColumn(name="user")
 	protected User user;
 	public Alert getAlert() {
 		return alert;

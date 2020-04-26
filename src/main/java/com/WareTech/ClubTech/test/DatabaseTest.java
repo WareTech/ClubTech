@@ -1,15 +1,7 @@
 package com.WareTech.ClubTech.test;
 
-import java.sql.Time;
-import java.util.List;
-
 import com.WareTech.ClubTech.Database;
-import com.WareTech.ClubTech.entity.Access;
-import com.WareTech.ClubTech.entity.Alert;
-import com.WareTech.ClubTech.entity.AlertUser;
-import com.WareTech.ClubTech.entity.Configuration;
 import com.WareTech.ClubTech.entity.User;
-import com.WareTech.ClubTech.entity.UserAccess;
 
 public class DatabaseTest 
 {

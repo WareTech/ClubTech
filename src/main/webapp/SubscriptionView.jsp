@@ -23,21 +23,9 @@ if (period == null)
 }
 %>
 
-<div data-role="popup" id="error">
-    <p>Error al actualizar</p>
-</div>
-
-<div data-role="popup" id="success">
-    <p>Per&iacute;odo actualizado</p>
-</div>
-
 <h3 class="ui-bar ui-bar-a ui-corner-all"><%=period.getDescription()%></h3>
 
-<form id="subscription-update" onsubmit="return false;">
-
-    <input type="hidden" name="periodId" value="<%=period.getId()%>">
-
-    <div>
+<ul data-role="listview" data-inset="true" data-divider-theme="a">
 <%
 List<Parameter> activityList = Database.getCurrentSession()
     .createQuery(
@@ -58,20 +46,18 @@ for (Parameter activity : activityList)
         .setParameter("activity", activity)
         .uniqueResult();
 %>
-        <label><%=activity.getDescription()%></label>
-        <input type="number" name="activity-<%=activity.getId()%>" id="activity-<%=activity.getId()%>" value="<%=subscription != null ? subscription.getAmount() : ""%>">
+    <li data-role="list-divider"><%=activity.getDescription()%></li>
+    <li><%=subscription == null ? "" : "$" + subscription.getAmount()%></li>
 <%
 }
 %>
-    </div>
+</ul>
 
-    <br>
-    <div class="ui-grid-a">
-        <div class="ui-block-a">
-            <button class="ui-btn ui-corner-all" onclick="javascript:subscriptionUpdate(); return;">Guardar</button>
-        </div>
-        <div class="ui-block-b">
-            <button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionSearch.jsp'); return;">Cancelar</button>
-        </div>
+<div class="ui-grid-a">
+    <div class="ui-block-a">
+        <button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionEdit.jsp?<%=period.getId()%>'); return;">Editar</button>
     </div>
-</form>
+    <div class="ui-block-b">
+        <button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionSearch.jsp'); return;">Volver</button>
+    </div>
+</div>

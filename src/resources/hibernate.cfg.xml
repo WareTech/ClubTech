@@ -20,18 +20,9 @@
         <mapping class="com.WareTech.ClubTech.entity.Access"/>
         <mapping class="com.WareTech.ClubTech.entity.Member"/>
         <mapping class="com.WareTech.ClubTech.entity.Parameter"/>
+        <mapping class="com.WareTech.ClubTech.entity.Subscription"/>
         <mapping class="com.WareTech.ClubTech.entity.User"/>
         <mapping class="com.WareTech.ClubTech.entity.UserAccess"/>
-
-        <!--
-        <mapping class="com.WareTech.ClubTech.entity.Alert"/>
-        <mapping class="com.WareTech.ClubTech.entity.AlertUser"/>
-        <mapping class="com.WareTech.ClubTech.entity.Configuration"/>
-        <mapping class="com.WareTech.ClubTech.entity.Member"/>
-        <mapping class="com.WareTech.ClubTech.entity.Note"/>
-        <mapping class="com.WareTech.ClubTech.entity.Payment"/>
-        <mapping class="com.WareTech.ClubTech.entity.Subscription"/>
-        -->
     </session-factory>
 
 </hibernate-configuration>
