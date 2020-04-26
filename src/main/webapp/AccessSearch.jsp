@@ -43,4 +43,7 @@ if (!"".equals(filter))
 %>
         </ul>
     </div>
+
+    <button class="ui-btn ui-corner-all" onclick="javascript:goTo('AccessCreate.jsp'); return;">Nuevo Acceso</button>
+
 </div>

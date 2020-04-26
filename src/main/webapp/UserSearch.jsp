@@ -43,3 +43,4 @@ if (!"".equals(filter))
         </ul>
     </div>
 </div>
+<button class="ui-btn ui-corner-all" onclick="javascript:goTo('UserCreate.jsp'); return;">Nuevo Usuario</button>

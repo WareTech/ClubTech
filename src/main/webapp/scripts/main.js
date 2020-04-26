@@ -116,6 +116,28 @@ function userUpdate()
 		});
 }
 
+function userCreate()
+{
+	loadingShow();
+
+	$.post(
+		"services/UserCreate.jsp",
+		$("#user").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("UserEdit.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		});
+}
+
 function validatePassword(password)
 {
 	if (password == null)
@@ -266,6 +288,28 @@ function accessUpdate()
 	);
 }
 
+function accessCreate()
+{
+	loadingShow();
+
+	$.post(
+		"services/AccessCreate.jsp",
+		$("#access").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("AccessEdit.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		});
+}
+
 function activityUpdate()
 {
 	loadingShow();
@@ -312,18 +356,6 @@ function activityCreate()
 	);
 }
 
-function subscriptionSearch()
-{
-	var filter = $("#subscription-filter").val()
-
-	if (filter == "")
-	{
-		$("#error").popup("open");
-		return;
-	}
-	goTo("SubscriptionSearch.jsp?" + filter);
-}
-
 function subscriptionUpdate()
 {
 	loadingShow();
@@ -345,12 +377,4 @@ function subscriptionUpdate()
 			$("#error").popup("open");
 		}
 	);
-}
-
-function subscriptionPeriodChanged()
-{
-	loadingShow();
-	var period = $("#subscription-period").val();
-	goTo("SubscriptionEdit.jsp?" + period);
-	loadingHide();
 }

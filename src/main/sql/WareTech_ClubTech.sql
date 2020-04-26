@@ -167,7 +167,8 @@ INSERT INTO Access (id, version,value, description) VALUES
     (22, 0, 'AccessView.jsp', 'AccessView'),
     (23, 0, 'ActivityView.jsp', 'ActivityView'),
     (24, 0, 'ActivityEdit.jsp', 'ActivityEdit'),
-    (25, 0, 'ActivityCreate.jsp', 'ActivityCreate');
+    (25, 0, 'ActivityCreate.jsp', 'ActivityCreate'),
+    (26, 0, 'UserCreate.jsp', 'UserCreate');
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 0, 1, 1),
@@ -194,4 +195,5 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (22, 0, 1, 22),
     (23, 0, 1, 23),
     (24, 0, 1, 24),
-    (25, 0, 1, 25);
+    (25, 0, 1, 25),
+    (26, 0, 1, 26);
