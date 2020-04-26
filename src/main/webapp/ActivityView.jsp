@@ -20,6 +20,8 @@ if (activity == null)
 }
 %>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Actividades</h3>
+
 <ul data-role="listview" data-inset="true" data-divider-theme="a">
     <li data-role="list-divider">Clave</li>
     <li><%=activity.getValue()%></li>

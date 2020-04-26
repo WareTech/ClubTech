@@ -6,6 +6,8 @@
     <p>Actividad creada</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Actividades</h3>
+
 <form data-role="tabs" id="activity-create" onsubmit="return false;">
 
     <h3></h3>

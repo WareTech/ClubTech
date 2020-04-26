@@ -28,11 +28,12 @@ if (parameter == null)
     <p>Actividad actualizada</p>
 </div>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Actividades</h3>
+
 <form data-role="tabs" id="activity-edit" onsubmit="return false;">
 
     <input type="hidden" name="activityId" value="<%=parameter.getId()%>">
 
-    <h3></h3>
     <label>Clave</label>
     <input type="text" name="value" value="<%=parameter.getValue()%>">
     <label>Descripci&oacute;n</label>

@@ -2,8 +2,9 @@
 <%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
 <%@ page import="com.WareTech.ClubTech.Database" %>
 
+<h3 class="ui-bar ui-bar-a ui-corner-all">Actividades</h3>
+
 <ul data-role="listview" data-inset="true">
-    <li data-role="list-divider">Actividades</li>
 <%
 Parameter activity = (Parameter) Database.getCurrentSession()
         .createQuery("FROM Parameter activity WHERE value = :activity")

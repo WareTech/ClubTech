@@ -15,7 +15,7 @@
 			<%@include file="Header.jsp"%>
 			<div data-role="main" class="ui-content">
 				<%@include file="Menu.jsp"%>
-				<div id="content">
+				<div id="content" style="margin-top: -20px;">
 					<%@include file="Landing.jsp"%>
 				</div>
 			</div>
