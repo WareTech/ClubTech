@@ -400,3 +400,14 @@ function subscriptionUpdate()
 		}
 	);
 }
+
+function paymentSearch()
+{
+	var filter = $("#filter").val()
+	if (filter == "")
+	{
+		$("#error").popup("open");
+		return;
+	}
+	goTo("PaymentSearch.jsp?" + filter);
+}

@@ -15,13 +15,13 @@ filter = filter.trim().toLowerCase();
 	<p>Busq&uacute;eda no v&aacute;lida</p>
 </div>
 
-<h3 class="ui-bar ui-bar-a ui-corner-all">Socios</h3>
+<h3 class="ui-bar ui-bar-a ui-corner-all">Pagos</h3>
 
 <div>
-	<div id="member-search-filter-panel">
-		<label for="member-search-filter">Buscar socio</label>
-		<input type="text" name="member-search-filter" id="member-search-filter" value="<%=filter%>">
-		<button class="ui-btn ui-corner-all" onclick="javascript:memberSearch();return;">Buscar</button>
+	<div>
+		<label>Buscar socio</label>
+		<input type="text" id="filter" value="<%=filter%>">
+		<button class="ui-btn ui-corner-all" onclick="javascript:paymentSearch();return;">Buscar</button>
 	</div>
 
 	<div id="member-search-filter-list-panel">
@@ -40,7 +40,7 @@ for(Member member : memberList)
 {
 %>
 			<li>
-				<a href="javascript:goTo('MemberView.jsp?<%=member.getId()%>');">
+				<a href="javascript:goTo('PaymentViewMember.jsp?<%=member.getId()%>');">
 					<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;<%=member.getDni() == null ? "" : "(" + member.getDni() +")"%>
 				</a>
 			</li>
