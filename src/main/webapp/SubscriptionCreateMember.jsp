@@ -10,12 +10,13 @@ if (filter == null)
 }
 filter = filter.trim().toLowerCase();
 %>
-<div>
-	<h3>Pagar cuota</h3>
 
-	<div data-role="popup" id="error">
-		<p>Busq&uacute;eda no v&aacute;lida</p>
-	</div>
+<div data-role="popup" id="error">
+	<p>Busq&uacute;eda no v&aacute;lida</p>
+</div>
+
+<div>
+	<h3 class="ui-bar ui-bar-a ui-corner-all">Pagos</h3>
 
 	<div id="subscription-create-member-panel">
 		<label for="subscription-create-member">Socio:</label>

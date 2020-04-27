@@ -1,39 +1,68 @@
 package com.WareTech.ClubTech.entity;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment
     extends AbstractPersistentObject
 {
-    protected Long playerId;
-    protected Long subscriptionId;
-    protected Double amount;
-    protected Date date;
+    final static public String DATE_TIME_FORMAT = "yyyyMMddHHmmss";
+    final static public DateFormat DATE_TIME_FORMATER = new SimpleDateFormat(DATE_TIME_FORMAT);
 
-    public Long getPlayerId() {
-        return playerId;
+    @ManyToOne
+    @JoinColumn(name = "member")
+    protected Member member;
+    @ManyToOne
+    @JoinColumn(name = "subscription")
+    protected Subscription subscription;
+    protected Integer amount;
+    @ManyToOne
+    @JoinColumn(name = "user")
+    protected User user;
+    protected String datetime;
+
+    public Member getMember() {
+        return member;
     }
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
+
+    public void setMember(Member member) {
+        this.member = member;
     }
-    public Long getSubscriptionId() {
-        return subscriptionId;
+
+    public Subscription getSubscription() {
+        return subscription;
     }
-    public void setSubscriptionId(Long subscriptionId) {
-        this.subscriptionId = subscriptionId;
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
-    public Double getAmount() {
+
+    public Integer getAmount() {
         return amount;
     }
-    public void setAmount(Double amount) {
+
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
-    public Date getDate() {
-        return date;
+
+    public String getDatetime() {
+        return datetime;
     }
-    public void setDate(Date date) {
-        this.date = date;
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -83,6 +83,28 @@ function subscriptionCreateSearchMember()
 	goTo("SubscriptionCreateMember.jsp?" + filter);
 }
 
+function paymentCreate()
+{
+	loadingShow();
+
+	$.post(
+		"services/PaymentCreate.jsp",
+		$("#payment").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("PaymentView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		});
+}
+
 function userSearch()
 {
 	var filter = $("#user-list").val()

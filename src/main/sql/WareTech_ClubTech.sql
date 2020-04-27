@@ -74,13 +74,28 @@ CREATE TABLE IF NOT EXISTS Member (
 CREATE TABLE IF NOT EXISTS Subscription (
     id bigint(20) NOT NULL auto_increment,
     version bigint(20) NOT NULL default '0',
-    amount int(5) NOT NULL,
     activity bigint(20) NOT NULL,
     period bigint(20) NOT NULL,
+    amount int(5) NOT NULL,
     PRIMARY KEY  (id),
     CONSTRAINT FK_Suscription_activity FOREIGN KEY (activity) REFERENCES Parameter (id),
     CONSTRAINT FK_Suscription_period FOREIGN KEY (period) REFERENCES Parameter (id),
     UNIQUE KEY UK_Suscription_period_activity (period, activity)
+    );
+
+CREATE TABLE IF NOT EXISTS Payment (
+    id bigint(20) NOT NULL auto_increment,
+    version bigint(20) NOT NULL default '0',
+    member bigint(20) NOT NULL,
+    subscription bigint(20) NOT NULL,
+    amount int(5) NOT NULL,
+    user bigint(20) NOT NULL,
+    datetime varchar(14) NOT NULL,
+    PRIMARY KEY  (id),
+    CONSTRAINT FK_Payment_member FOREIGN KEY (member) REFERENCES Member (id),
+    CONSTRAINT FK_Payment_subscription FOREIGN KEY (subscription) REFERENCES Subscription (id),
+    CONSTRAINT FK_Payment_user FOREIGN KEY (user) REFERENCES User (id),
+    UNIQUE KEY UK_Payment_member_subscription (member, subscription)
     );
 
 INSERT INTO Parameter (id, version,value, description, parent, position) VALUES
