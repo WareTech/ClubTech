@@ -80,7 +80,7 @@ function subscriptionCreateSearchMember()
 		$("#error").popup("open");
 		return;
 	}
-	goTo("SubscriptionCreateMember.jsp?" + filter);
+	goTo("PaymentCreateMember.jsp?" + filter);
 }
 
 function paymentCreate()

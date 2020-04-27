@@ -32,7 +32,7 @@ for(Subscription subscription : subscriptionList)
 {
 %>
 		<li>
-			<a href="javascript:goTo('SubscriptionCreateConfirm.jsp?member=<%=member.getId()%>&subscription=<%=subscription.getId()%>');">
+			<a href="javascript:goTo('PaymentCreateConfirm.jsp?member=<%=member.getId()%>&subscription=<%=subscription.getId()%>');">
 				<%=subscription.getPeriod().getDescription()%>&nbsp;($<%=subscription.getAmount()%>)
 			</a>
 		</li>
@@ -42,7 +42,7 @@ for(Subscription subscription : subscriptionList)
 	</ul>
 	<div>
 		<input type="text" name="amount" placeholder="Ingrese un monto..." value="" style="text-align: right;">
-		<button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionCreateConfirm.jsp');; return;">Pagar</button>
-		<button class="ui-btn ui-corner-all" id="subscription-create-member-serach" onclick="javascript:goTo('SubscriptionCreateMember.jsp'); return;">Cancelar</button>
+		<button class="ui-btn ui-corner-all" onclick="javascript:goTo('PaymentCreateConfirm.jsp');; return;">Pagar</button>
+		<button class="ui-btn ui-corner-all" id="subscription-create-member-serach" onclick="javascript:goTo('PaymentCreateMember.jsp'); return;">Cancelar</button>
 	</div>
 </div>

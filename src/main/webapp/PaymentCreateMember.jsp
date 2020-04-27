@@ -40,7 +40,7 @@ if (!"".equals(filter))
 	{
 %>
 			<li>
-				<a href="javascript:goTo('SubscriptionCreatePeriod.jsp?<%=member.getId()%>');">
+				<a href="javascript:goTo('PaymentCreateSubscription.jsp?<%=member.getId()%>');">
 				<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;<%=member.getDni() == null ? "" : "(" + member.getDni() +")"%>
 				</a>
 			</li>

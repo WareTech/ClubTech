@@ -159,7 +159,7 @@ INSERT INTO User (id, version,username, password) VALUES
 
 INSERT INTO Access (id, version,value, description) VALUES
     (1, 0, 'DEVELOPER_ACCESS', 'DEVELOPER_ACCESS'),
-    (2, 0, 'SubscriptionCreateMember.jsp', 'SubscriptionCreateMember'),
+    (2, 0, 'PaymentCreateMember.jsp', 'PaymentCreateMember'),
     (3, 0, 'SubscriptionSearch.jsp', 'SubscriptionSearch'),
     (4, 0, 'SubscriptionEdit.jsp', 'SubscriptionEdit'),
     (5, 0, 'MemberCreate.jsp', 'MemberCreate'),
@@ -183,7 +183,10 @@ INSERT INTO Access (id, version,value, description) VALUES
     (23, 0, 'ActivityView.jsp', 'ActivityView'),
     (24, 0, 'ActivityEdit.jsp', 'ActivityEdit'),
     (25, 0, 'ActivityCreate.jsp', 'ActivityCreate'),
-    (26, 0, 'UserCreate.jsp', 'UserCreate');
+    (26, 0, 'UserCreate.jsp', 'UserCreate'),
+    (27, 0, 'PaymentCreateSubscription.jsp', 'PaymentCreateSubscription'),
+    (28, 0, 'PaymentCreateConfirm.jsp', 'PaymentCreateConfirm'),
+    (29, 0, 'PaymentSearch.jsp', 'PaymentSearch');
 
 INSERT INTO UserAccess (id, version, user, access) VALUES
     (1, 0, 1, 1),
@@ -211,4 +214,7 @@ INSERT INTO UserAccess (id, version, user, access) VALUES
     (23, 0, 1, 23),
     (24, 0, 1, 24),
     (25, 0, 1, 25),
-    (26, 0, 1, 26);
+    (26, 0, 1, 26),
+    (27, 0, 1, 27),
+    (28, 0, 1, 28),
+    (29, 0, 1, 29);

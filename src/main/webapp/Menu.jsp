@@ -3,13 +3,13 @@
 <div data-role="panel" id="menu" data-display="overlay">
 	<ul data-role="listview">
 
-<%if (Utils.checkAuthorization(request, response, new String[]{"SubscriptionCreateMember.jsp", "SubscriptionSearch.jsp"})) {%>
+<%if (Utils.checkAuthorization(request, response, new String[]{"PaymentCreateMember.jsp", "PaymentSearch.jsp"})) {%>
 		<li data-role="list-divider">Cuotas</li>
-	<%if (Utils.checkAuthorization(request, response, "SubscriptionCreateMember.jsp")) {%>
-		<li><a href="javascript:goTo('SubscriptionCreateMember.jsp');" data-rel="close" class="ui-btn ui-icon-plus ui-btn-icon-right">Pagar Cuota</a></li>
+	<%if (Utils.checkAuthorization(request, response, "PaymentCreateMember.jsp")) {%>
+		<li><a href="javascript:goTo('PaymentCreateMember.jsp');" data-rel="close" class="ui-btn ui-icon-plus ui-btn-icon-right">Pagar Cuota</a></li>
 	<%}%>
-	<%if (Utils.checkAuthorization(request, response, "SubscriptionSearch.jsp")) {%>
-		<li><a href="javascript:goTo('SubscriptionSearch.jsp')" data-rel="close" class="ui-btn ui-icon-search ui-btn-icon-right">Buscar Pago</a></li>
+	<%if (Utils.checkAuthorization(request, response, "PaymentSearch.jsp")) {%>
+		<li><a href="javascript:goTo('PaymentSearch.jsp')" data-rel="close" class="ui-btn ui-icon-search ui-btn-icon-right">Buscar Pago</a></li>
 	<%}%>
 <%}%>
 
