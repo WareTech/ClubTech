@@ -1,10 +1,13 @@
 <%@ page import="com.WareTech.ClubTech.entity.Member" %>
 <%@ page import="com.WareTech.ClubTech.Database" %>
 <%@ page import="com.WareTech.ClubTech.entity.Subscription" %>
+<%@ page import="com.WareTech.ClubTech.service.ActivityService" %>
+<%@ page import="com.WareTech.ClubTech.service.MemberService" %>
+<%@ page import="com.WareTech.ClubTech.entity.Payment" %>
 
 <%
-String memberId = request.getParameter("member");
-if (memberId == null || "".equals(memberId))
+String paymentId = request.getQueryString();
+if (paymentId == null || "".equals(paymentId))
 {
 %>
 <%@include file="Error.jsp"%>
@@ -12,26 +15,8 @@ if (memberId == null || "".equals(memberId))
 		return;
 }
 
-Member member = (Member) Database.getCurrentSession().get(Member.class, Long.parseLong(memberId));
-if (member == null)
-{
-%>
-<%@include file="Error.jsp"%>
-<%
-		return;
-}
-
-String subscriptionId = request.getParameter("subscription");
-if (subscriptionId == null || "".equals(subscriptionId))
-{
-%>
-<%@include file="Error.jsp"%>
-<%
-		return;
-}
-
-Subscription subscription = (Subscription) Database.getCurrentSession().get(Subscription.class, Long.parseLong(subscriptionId));
-if (subscription == null)
+Payment payment = (Payment) Database.getCurrentSession().get(Payment.class, Long.parseLong(paymentId));
+if (payment == null)
 {
 %>
 <%@include file="Error.jsp"%>
@@ -42,23 +27,24 @@ if (subscription == null)
 String amount = request.getParameter("amount");
 if (amount == null || "".equals(amount))
 {
-	amount = subscription.getAmount().toString();
+	amount = payment.getAmount().toString();
 }
 %>
 
 <h3 class="ui-bar ui-bar-a ui-corner-all">Pagos</h3>
 <form id="payment">
-	<input type="hidden" name="member" value="<%=member.getId()%>">
-	<input type="hidden" name="subscription" value="<%=subscription.getId()%>">
+	<input type="hidden" name="payment" value="<%=payment.getId()%>">
 	<input type="hidden" name="amount" value="<%=amount%>">
 </form>
 <ul data-role="listview" data-inset="true" data-divider-theme="a">
 	<li data-role="list-divider">Socio</li>
-	<li><%=member.getFirstname() + " " + member.getLastname() + (member.getDni() == null ? "" : " (" + member.getDni() + ")")%></li>
+	<li><%=MemberService.fullDescription(payment.getMember())%></li>
 	<li data-role="list-divider">Actividad</li>
-	<li><%=subscription.getActivity().getDescription()%></li>
+	<li><%=ActivityService.fullDescription(payment.getSubscription().getActivity())%></li>
+	<li data-role="list-divider">Descuento</li>
+	<li><%=payment.getMember().getDiscount().getDescription()%></li>
 	<li data-role="list-divider">Cuota</li>
-	<li><%=subscription.getPeriod().getDescription()%></li>
+	<li><%=payment.getSubscription().getPeriod().getDescription()%></li>
 	<li data-role="list-divider">Monto</li>
 	<li>$<%=amount%></li>
 </ul>

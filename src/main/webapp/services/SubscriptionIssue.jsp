@@ -9,26 +9,17 @@
 String periodId = request.getQueryString();
 if (periodId == null || "".equals(periodId))
 {
-%>
-<%@include file="Error.jsp"%>
-<%
+    out.print(-1);
     return;
 }
 
 Parameter period = (Parameter) Database.getCurrentSession().get(Parameter.class, Long.parseLong(periodId));
 if (period == null)
 {
-%>
-<%@include file="Error.jsp"%>
-<%
+    out.print(-1);
     return;
 }
-%>
 
-<h3 class="ui-bar ui-bar-a ui-corner-all"><%=period.getDescription()%></h3>
-
-<ul data-role="listview" data-inset="true" data-divider-theme="a">
-<%
 User user = Utils.getUser(request, response);
 List<Parameter> activityList = ActivityService.toListWithoutRoot();
 String datetime = Payment.DATE_TIME_FORMATTER.format(new Date());
@@ -61,22 +52,9 @@ for (Parameter activity : activityList)
         }
         payment.setAmount(amount);
 
-        payment.setUser(user);
-        payment.setDatetime(datetime);
-
         Database.getCurrentSession().save(payment);
     }
 }
+
+out.print(periodId);
 %>
-</ul>
-
-<button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionIssue.jsp?<%=period.getId()%>'); return;">Emitir</button>
-
-<div class="ui-grid-a">
-    <div class="ui-block-a">
-        <button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionEdit.jsp?<%=period.getId()%>'); return;">Editar</button>
-    </div>
-    <div class="ui-block-b">
-        <button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionSearch.jsp'); return;">Volver</button>
-    </div>
-</div>

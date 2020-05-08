@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.Member" %>
 <%@ page import="com.WareTech.ClubTech.Database" %>
+<%@ page import="com.WareTech.ClubTech.service.MemberService" %>
 
 <%
 String filter = request.getQueryString();
@@ -41,7 +42,7 @@ for(Member member : memberList)
 %>
 			<li>
 				<a href="javascript:goTo('MemberView.jsp?<%=member.getId()%>');">
-					<%=member.getFirstname()%>&nbsp;<%=member.getLastname()%>&nbsp;<%=member.getDni() == null ? "" : "(" + member.getDni() +")"%>
+					<%=MemberService.fullDescription(member)%>
 				</a>
 			</li>
 <%

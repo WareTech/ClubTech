@@ -4,6 +4,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.WareTech.ClubTech.service.ActivityService" %>
+<%@ page import="com.WareTech.ClubTech.service.MemberService" %>
+<%@ page import="com.WareTech.ClubTech.entity.Payment" %>
 <%
 String memberId = request.getQueryString();
 if (memberId == null)
@@ -21,50 +24,52 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
 
 	<ul data-role="listview" data-inset="true" data-divider-theme="a">
 		<li data-role="list-divider">Socio</li>
-		<li><%=member.getFirstname() + " " + member.getLastname() + (member.getDni() == null ? "" : " (" + member.getDni() + ")")%></li>
+		<li><%=MemberService.fullDescription(member)%></li>
 		<li data-role="list-divider">Actividad</li>
-<%
-String string = "";
-for (Parameter activity = member.getActivity(); activity.getParent() != null; activity = activity.getParent())
-{
-	if (string.length() > 0)
-	{
-		string = " " + string;
-	}
-	string = activity.getDescription() + string;
-}
-%>
-		<li><%=string%></li>
+		<li><%=ActivityService.fullDescription(member.getActivity())%></li>
+		<li data-role="list-divider">Descuento</li>
+		<li><%=member.getDiscount().getDescription()%></li>
 		<li data-role="list-divider">Per&iacute;odo</li>
 <%
-List<Subscription> subscriptionList = new ArrayList<>();
-for (Parameter activity = member.getActivity(); activity != null; activity = activity.getParent())
+List<Payment> paymentList = Database.getCurrentSession()
+	.createQuery("FROM Payment p WHERE p.member = :member ORDER BY subscription")
+	.setParameter("member", member)
+	.list();
+
+for(Payment payment : paymentList)
 {
-	subscriptionList = Database.getCurrentSession()
-			.createQuery("FROM Subscription WHERE activity = :activity ORDER BY period.position ASC")
-			.setParameter("activity", activity)
-			.list();
-	if (subscriptionList.size() > 0)
+	if (payment.getDatetime() == null)
 	{
-		break;
+%>
+		<li>
+			<a href="javascript:goTo('PaymentCreateConfirm.jsp?<%=payment.getId()%>');">
+				<%=payment.getSubscription().getPeriod().getDescription()%>&nbsp;($<%=payment.getAmount()%>)
+			</a>
+		</li>
+<%
+	}
+	else
+	{
+%>
+		<li data-icon="check">
+			<a href="javascript:goTo('PaymentView.jsp?<%=payment.getId()%>');">
+				<%=payment.getSubscription().getPeriod().getDescription()%>&nbsp;($<%=payment.getAmount()%>)
+			</a>
+		</li>
+<%
 	}
 }
 
-for(Subscription subscription : subscriptionList)
+if (paymentList.size() == 0)
 {
 %>
-		<li>
-			<a href="javascript:goTo('PaymentCreateConfirm.jsp?member=<%=member.getId()%>&subscription=<%=subscription.getId()%>');">
-				<%=subscription.getPeriod().getDescription()%>&nbsp;($<%=subscription.getAmount()%>)
-			</a>
-		</li>
+		<li>No hay cuotas a pagar</li>
 <%
 }
 %>
 	</ul>
 	<div>
-		<input type="text" name="amount" placeholder="Ingrese un monto..." value="" style="text-align: right;">
-		<button class="ui-btn ui-corner-all" onclick="javascript:goTo('PaymentCreateConfirm.jsp');; return;">Pagar</button>
+		<button class="ui-btn ui-corner-all" onclick="javascript:goTo('PaymentCreateConfirm.jsp'); return;">Pagar</button>
 		<button class="ui-btn ui-corner-all" id="subscription-create-member-serach" onclick="javascript:goTo('PaymentCreateMember.jsp'); return;">Cancelar</button>
 	</div>
 </div>

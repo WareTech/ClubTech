@@ -6,29 +6,15 @@
 <%@ page import="com.WareTech.ClubTech.Utils" %>
 
 <%
-String memberId = request.getParameter("member");
-if (memberId == null || "".equals(memberId))
+String paymentId = request.getParameter("payment");
+if (paymentId == null || "".equals(paymentId))
 {
     out.print(-1);
     return;
 }
 
-Member member = (Member) Database.getCurrentSession().get(Member.class, Long.parseLong(memberId));
-if (member == null)
-{
-    out.print(-1);
-    return;
-}
-
-String subscriptionId = request.getParameter("subscription");
-if (subscriptionId == null || "".equals(subscriptionId))
-{
-    out.print(-1);
-    return;
-}
-
-Subscription subscription = (Subscription) Database.getCurrentSession().get(Subscription.class, Long.parseLong(subscriptionId));
-if (subscription == null)
+Payment payment = (Payment) Database.getCurrentSession().get(Payment.class, Long.parseLong(paymentId));
+if (payment == null)
 {
     out.print(-1);
     return;
@@ -41,13 +27,9 @@ if (amount == null || "".equals(amount))
     return;
 }
 
-Payment payment = new Payment();
-payment.setMember(member);
-payment.setSubscription(subscription);
-payment.setAmount(Integer.parseInt(amount));
 payment.setDatetime(Payment.DATE_TIME_FORMATTER.format(new Date()));
 payment.setUser(Utils.getUser(request, response));
-Database.getCurrentSession().save(payment);
+Database.getCurrentSession().update(payment);
 
 out.print(payment.getId());
 %>

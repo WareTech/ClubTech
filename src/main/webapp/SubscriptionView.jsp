@@ -42,7 +42,7 @@ for (Parameter activity : activityList)
         .setParameter("subscription", subscription)
         .uniqueResult();
     Long payedCount = (Long) Database.getCurrentSession()
-        .createQuery("SELECT COUNT(*) FROM Payment WHERE subscription = :subscription AND amount IS NULL")
+        .createQuery("SELECT COUNT(*) FROM Payment WHERE subscription = :subscription AND datetime IS NOT NULL")
         .setParameter("subscription", subscription)
         .uniqueResult();
 %>
@@ -75,7 +75,7 @@ for (Parameter activity : activityList)
 %>
 </ul>
 
-<button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionIssue.jsp?<%=period.getId()%>'); return;">Emitir</button>
+<button class="ui-btn ui-corner-all" onclick="javascript:subscriptionIssue('<%=period.getId()%>'); return;">Emitir</button>
 
 <div class="ui-grid-a">
     <div class="ui-block-a">

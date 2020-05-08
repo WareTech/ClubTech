@@ -401,6 +401,29 @@ function subscriptionUpdate()
 	);
 }
 
+function subscriptionIssue(period)
+{
+	loadingShow();
+
+	$.post(
+		"services/SubscriptionIssue.jsp?" + period,
+		$("#subscription-update").serialize(),
+		function(data, status)
+		{
+			loadingHide();
+
+			if (data > 0)
+			{
+				$("#success").popup("open");
+				goTo("SubscriptionView.jsp?" + data);
+				return;
+			}
+
+			$("#error").popup("open");
+		}
+	);
+}
+
 function paymentSearch()
 {
 	var filter = $("#filter").val()
