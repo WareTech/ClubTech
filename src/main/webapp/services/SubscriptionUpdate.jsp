@@ -1,8 +1,7 @@
 <%@ page import="com.WareTech.ClubTech.Database" %>
-<%@ page import="java.util.Base64" %>
 <%@ page import="java.util.List" %>
-<%@ page import="javax.xml.crypto.Data" %>
 <%@ page import="com.WareTech.ClubTech.entity.*" %>
+<%@ page import="com.WareTech.ClubTech.service.ActivityService" %>
 
 <%
 String periodId = request.getParameter("periodId");
@@ -19,17 +18,7 @@ if (period == null)
     return;
 }
 
-List<Parameter> activityList = Database.getCurrentSession()
-    .createQuery(
-        new StringBuffer()
-            .append("SELECT child FROM Parameter child, Parameter parent")
-            .append(" WHERE parent.value = :activity AND child.parent = parent")
-            .append(" ORDER BY child.position ASC")
-            .toString()
-    )
-    .setParameter("activity", Parameter.ACTIVITY)
-    .list();
-
+List<Parameter> activityList = ActivityService.toList();
 for(Parameter activity : activityList)
 {
     String amount = request.getParameter("activity-" + activity.getId());

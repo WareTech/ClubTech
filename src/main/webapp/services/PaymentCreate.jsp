@@ -45,7 +45,7 @@ Payment payment = new Payment();
 payment.setMember(member);
 payment.setSubscription(subscription);
 payment.setAmount(Integer.parseInt(amount));
-payment.setDatetime(Payment.DATE_TIME_FORMATER.format(new Date()));
+payment.setDatetime(Payment.DATE_TIME_FORMATTER.format(new Date()));
 payment.setUser(Utils.getUser(request, response));
 Database.getCurrentSession().save(payment);
 

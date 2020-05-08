@@ -2,6 +2,7 @@
 <%@ page import="com.WareTech.ClubTech.Database" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.Subscription" %>
+<%@ page import="com.WareTech.ClubTech.service.ActivityService" %>
 
 <%
 String periodId = request.getQueryString();
@@ -39,16 +40,7 @@ if (period == null)
 
     <div>
 <%
-List<Parameter> activityList = Database.getCurrentSession()
-    .createQuery(
-        new StringBuffer()
-            .append("SELECT child FROM Parameter child, Parameter parent")
-            .append(" WHERE parent.value = :activity AND child.parent = parent")
-            .append(" ORDER BY child.position ASC")
-            .toString()
-        )
-    .setParameter("activity", Parameter.ACTIVITY)
-    .list();
+List<Parameter> activityList = ActivityService.toListWithoutRoot();
 
 for (Parameter activity : activityList)
 {
@@ -57,8 +49,9 @@ for (Parameter activity : activityList)
         .setParameter("period", period)
         .setParameter("activity", activity)
         .uniqueResult();
+
 %>
-        <label><%=activity.getDescription()%></label>
+        <label><%=ActivityService.fullDescription(activity)%></label>
         <input type="number" name="activity-<%=activity.getId()%>" id="activity-<%=activity.getId()%>" value="<%=subscription != null ? subscription.getAmount() : ""%>">
 <%
 }

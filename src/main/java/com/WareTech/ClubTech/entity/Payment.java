@@ -12,7 +12,7 @@ public class Payment
     extends AbstractPersistentObject
 {
     final static public String DATE_TIME_FORMAT = "yyyyMMddHHmmss";
-    final static public DateFormat DATE_TIME_FORMATER = new SimpleDateFormat(DATE_TIME_FORMAT);
+    final static public DateFormat DATE_TIME_FORMATTER = new SimpleDateFormat(DATE_TIME_FORMAT);
 
     @ManyToOne
     @JoinColumn(name = "member")

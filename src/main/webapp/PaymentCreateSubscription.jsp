@@ -2,6 +2,8 @@
 <%@ page import="com.WareTech.ClubTech.Database" %>
 <%@ page import="com.WareTech.ClubTech.entity.Subscription" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
+<%@ page import="java.util.ArrayList" %>
 <%
 String memberId = request.getQueryString();
 if (memberId == null)
@@ -21,13 +23,33 @@ Member member = (Member) Database.getCurrentSession().get(Member.class, Long.par
 		<li data-role="list-divider">Socio</li>
 		<li><%=member.getFirstname() + " " + member.getLastname() + (member.getDni() == null ? "" : " (" + member.getDni() + ")")%></li>
 		<li data-role="list-divider">Actividad</li>
-		<li><%=member.getActivity().getDescription()%></li>
+<%
+String string = "";
+for (Parameter activity = member.getActivity(); activity.getParent() != null; activity = activity.getParent())
+{
+	if (string.length() > 0)
+	{
+		string = " " + string;
+	}
+	string = activity.getDescription() + string;
+}
+%>
+		<li><%=string%></li>
 		<li data-role="list-divider">Per&iacute;odo</li>
 <%
-List<Subscription> subscriptionList = Database.getCurrentSession()
-	.createQuery("FROM Subscription WHERE activity = :activity ORDER BY period.position ASC")
-	.setParameter("activity", member.getActivity())
-	.list();
+List<Subscription> subscriptionList = new ArrayList<>();
+for (Parameter activity = member.getActivity(); activity != null; activity = activity.getParent())
+{
+	subscriptionList = Database.getCurrentSession()
+			.createQuery("FROM Subscription WHERE activity = :activity ORDER BY period.position ASC")
+			.setParameter("activity", activity)
+			.list();
+	if (subscriptionList.size() > 0)
+	{
+		break;
+	}
+}
+
 for(Subscription subscription : subscriptionList)
 {
 %>

@@ -1,27 +1,18 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.WareTech.ClubTech.Database" %>
 <%@ page import="com.WareTech.ClubTech.entity.Parameter" %>
+<%@ page import="com.WareTech.ClubTech.service.PeriodService" %>
 
 <h3 class="ui-bar ui-bar-a ui-corner-all">Per&iacute;odos</h3>
 
 <div>
 	<ul data-role="listview" data-inset="true">
 <%
-List<Parameter> periodList = Database.getCurrentSession()
-	.createQuery(
-		new StringBuffer()
-			.append("SELECT child FROM Parameter child, Parameter parent")
-			.append(" WHERE parent.value = :period AND child.parent = parent")
-			.append(" ORDER BY child.position ASC")
-			.toString()
-	)
-	.setParameter("period", Parameter.PERIOD)
-	.list();
+List<Parameter> periodList = PeriodService.toList();
 
-for(Parameter parameter : periodList)
+for(Parameter period : periodList)
 {
 %>
-	<li><a href="javascript:goTo('SubscriptionView.jsp?<%=parameter.getId()%>');"><%=parameter.getDescription()%></a></li>
+	<li><a href="javascript:goTo('SubscriptionView.jsp?<%=period.getId()%>');"><%=period.getDescription()%></a></li>
 <%
 }
 %>

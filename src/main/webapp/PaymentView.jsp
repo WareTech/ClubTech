@@ -34,7 +34,7 @@ return;
 	<li data-role="list-divider">Monto</li>
 	<li>$<%=payment.getAmount()%></li>
 	<li data-role="list-divider">Fecha</li>
-	<li><%=Context.DATE_TIME_FORMATER.format(Payment.DATE_TIME_FORMATER.parse(payment.getDatetime()))%></li>
+	<li><%=Context.DATE_TIME_FORMATER.format(Payment.DATE_TIME_FORMATTER.parse(payment.getDatetime()))%></li>
 	<li data-role="list-divider">Comprobante</li>
 	<li><%=payment.getId()%></li>
 	<li data-role="list-divider">Autoridad</li>

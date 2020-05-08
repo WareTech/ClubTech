@@ -2,6 +2,7 @@
 <%@ page import="com.WareTech.ClubTech.Database" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.WareTech.ClubTech.entity.Subscription" %>
+<%@ page import="com.WareTech.ClubTech.service.ActivityService" %>
 
 <%
 String periodId = request.getQueryString();
@@ -27,16 +28,7 @@ if (period == null)
 
 <ul data-role="listview" data-inset="true" data-divider-theme="a">
 <%
-List<Parameter> activityList = Database.getCurrentSession()
-    .createQuery(
-        new StringBuffer()
-            .append("SELECT child FROM Parameter child, Parameter parent")
-            .append(" WHERE parent.value = :activity AND child.parent = parent")
-            .append(" ORDER BY child.position ASC")
-            .toString()
-        )
-    .setParameter("activity", Parameter.ACTIVITY)
-    .list();
+List<Parameter> activityList = ActivityService.toListWithoutRoot();
 
 for (Parameter activity : activityList)
 {
@@ -45,13 +37,45 @@ for (Parameter activity : activityList)
         .setParameter("period", period)
         .setParameter("activity", activity)
         .uniqueResult();
+    Long issuedCount = (Long) Database.getCurrentSession()
+        .createQuery("SELECT COUNT(*) FROM Payment WHERE subscription = :subscription")
+        .setParameter("subscription", subscription)
+        .uniqueResult();
+    Long payedCount = (Long) Database.getCurrentSession()
+        .createQuery("SELECT COUNT(*) FROM Payment WHERE subscription = :subscription AND amount IS NULL")
+        .setParameter("subscription", subscription)
+        .uniqueResult();
 %>
-    <li data-role="list-divider"><%=activity.getDescription()%></li>
-    <li><%=subscription == null ? "" : "$" + subscription.getAmount()%></li>
+    <li data-role="list-divider">
+        <div class="ui-grid-a">
+            <div class="ui-block-a"><%=ActivityService.fullDescription(activity)%></div>
+            <div class="ui-block-b"></div>
+        </div>
+    </li>
+    <li>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">Precio</div>
+            <div class="ui-block-b"><%=subscription == null ? "" : "$" + subscription.getAmount()%></div>
+        </div>
+    </li>
+    <li>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">Emitidas</div>
+            <div class="ui-block-b"><%=issuedCount%></div>
+        </div>
+    </li>
+    <li>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">Pagadas</div>
+            <div class="ui-block-b"><%=payedCount%></div>
+        </div>
+    </li>
 <%
 }
 %>
 </ul>
+
+<button class="ui-btn ui-corner-all" onclick="javascript:goTo('SubscriptionIssue.jsp?<%=period.getId()%>'); return;">Emitir</button>
 
 <div class="ui-grid-a">
     <div class="ui-block-a">
