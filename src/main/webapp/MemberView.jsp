@@ -85,6 +85,8 @@ if (member == null)
 	</div>
 </div>
 
+<button onclick="javascript:goTo('PaymentCreateSubscription.jsp?<%=memberId%>'); return;">Ver Pagos</button>
+
 <div class="member-update-button ui-grid-a">
 	<div class="ui-block-a">
 		<button class="ui-btn ui-corner-all" id="member-update" onclick="javascript:goTo('MemberEdit.jsp?<%=memberId%>'); return;">Editar</button>

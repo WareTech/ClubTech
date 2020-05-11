@@ -69,7 +69,6 @@ if (paymentList.size() == 0)
 %>
 	</ul>
 	<div>
-		<button class="ui-btn ui-corner-all" onclick="javascript:goTo('PaymentCreateConfirm.jsp'); return;">Pagar</button>
 		<button class="ui-btn ui-corner-all" id="subscription-create-member-serach" onclick="javascript:goTo('PaymentCreateMember.jsp'); return;">Cancelar</button>
 	</div>
 </div>

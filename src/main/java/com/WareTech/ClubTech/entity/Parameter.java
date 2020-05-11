@@ -9,6 +9,7 @@ public class Parameter
     extends AbstractPersistentObject
 {
     final static public String PERIOD = "PERIOD";
+    final static public String PERIOD_YEARLY = "Anual";
     final static public String PAYMENT_TYPE = "PAYMENT_TYPE";
     final static public String DISCOUNT = "DISCOUNT";
     final static public String ACTIVITY = "ACTIVITY";
