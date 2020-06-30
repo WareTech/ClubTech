@@ -56,5 +56,6 @@ for (Parameter activity : activityList)
     }
 }
 
+
 out.print(periodId);
 %>
