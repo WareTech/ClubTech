@@ -72,6 +72,11 @@ public class Utils
 		HttpServletResponse httpServletResponse
 		)
 	{
+		if (httpServletRequest.getCookies() == null)
+		{
+			return null;
+		}
+
 		for (Cookie cookie : httpServletRequest.getCookies())
 		{
 			if (USER.equals(cookie.getName()))
