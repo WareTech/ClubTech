@@ -49,6 +49,11 @@ public class Database
 	 */
 	static public Session getCurrentSession() 
     {
+    	if (!sessionFactory.getCurrentSession().isOpen())
+		{
+			sessionFactory.openSession();
+		}
+
 		return sessionFactory.getCurrentSession();
 	}
 
