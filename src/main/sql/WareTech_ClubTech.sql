@@ -151,11 +151,11 @@ INSERT INTO Parameter (id, version,value, description, parent, position) VALUES
     (405, 0, 'STATUS_PRE_SIGNED', 'Pre Inscripción', 400, null),
     (406, 0, 'STATUS_SCHOOL', 'Escuelita', 400, null);
 
-INSERT INTO User (id, version,username, password) VALUES
-    (1, 0, 'admin', 'admin'),
-    (2, 0, 'Augusto', 'Soncini'),
-    (3, 0, 'Valentino', 'Soncini'),
-    (4, 0, 'Catalina', 'Soncini');
+INSERT INTO User (id, version,username, password, token) VALUES
+    (1, 0, 'admin', 'YWRtaW4=', null), -- admin
+    (2, 0, 'Augusto', 'Q2x1YlRlY2g=', null), -- ClubTech
+    (3, 0, 'Valentino', 'Q2x1YlRlY2g=', null), -- ClubTech
+    (4, 0, 'Catalina', 'Q2x1YlRlY2g=', null); -- ClubTech
 
 INSERT INTO Access (id, version,value, description) VALUES
     (1, 0, 'DEVELOPER_ACCESS', 'DEVELOPER_ACCESS'),
